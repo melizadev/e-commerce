@@ -6,7 +6,9 @@ import Error from "../../pages/error/error";
 import AuthCheck from "../authcheck/AuthCheck";
 import { BrowserRouter, Route, Routes} from "react-router";
 import Navbar from "../../components/navbar/Navbar";
-import Category from "../../pages/category/Category";
+import Category from "../../components/category/Category";
+import Footer from "../../components/footer/Footer";
+import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 const Mainlayout = () => {
     return ( 
     <BrowserRouter>
@@ -18,6 +20,8 @@ const Mainlayout = () => {
             </AuthCheck>
     } />
         <Route path="/:category" element={<Category />}/>
+        <Route path="/shoppingCart" element={<ShoppingCart />}/>
+
        <Route path="auth" element={<Auth/>}>
                <Route path="login" element={<Login/>} />
                <Route path="register" element={<Register/>} />
@@ -25,6 +29,7 @@ const Mainlayout = () => {
 
          <Route path="*" element={<Error/>} />  
    </Routes>
+   <Footer />
     </BrowserRouter>
      )
 }

@@ -11,3 +11,12 @@
 .slick-slide>div{
     margin: 0 10px;
 }
+
+/* Cambia el color de las flechas de react-slick */
+.slick-prev:before,
+.slick-next:before {
+color: rgb(207, 113, 168); /* Cambia este valor al color que desees */
+}
+a, Link{
+text-decoration: none;
+}
