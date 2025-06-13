@@ -36,16 +36,16 @@ const Categories = () => {
     dots: true,
     infinite: true,
     speed: 400,
-    slidesToShow: 4, // Cambia este valor si quieres mostrar más de una imagen a la vez
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2500,
     arrows: true,
   };
 
- // ...existing code...
+ 
 return (
-  <div className="container min-h-[500px] mt-4"> {/* Cambia mt-4 por mt-16 para mayor separación */}
+  <div className="container min-h-[500px] mt-4"> 
       <h1 className="px-3 text-[40px] text-[#6b6b6b] pb-3">Categories</h1>
     <div className="container h-full sm:flex sm:flex-col ">
       <Slider {...settings}>
