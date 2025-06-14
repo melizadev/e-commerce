@@ -1,6 +1,7 @@
-import { Armchair, Check, Info, Search, ShoppingCart, Heart, User, Menu } from 'lucide-react';
+import {  Check, Info, Search, ShoppingCart, Heart, User, Menu } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
@@ -14,6 +15,8 @@ const Navbar = () => {
             navigate('/shoppingCart');
         }
     };
+    const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity);
+     
     return ( 
     <div>
        <div className="navbar_top w-full flex items-center h-[45px] justify-center bg-[#ffffff]">
@@ -48,7 +51,7 @@ const Navbar = () => {
                     <div className="hidden navbar_middle_right w-auto lg:flex md:flex items-center gap-1">
                         <button className= "capitalize w-[70px] cursor-pointer p-2 flex bg-transparent border-none shadow-none" onClick={handleCartClick} >
                             <ShoppingCart color="#574c41" /> 
-                            <div className="badge border-none text-white badge-sm bg-pink-600">0</div>
+                            <div className="badge border-none text-white badge-sm bg-pink-600">{cartTotalQuantity}</div>
                         </button>
                         <button className="btn capitalize  bg-transparent border-none shadow-none">
                             <Heart color="#574c41" />

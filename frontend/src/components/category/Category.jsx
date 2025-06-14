@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cartSlice"; // Asegúrate de que la ruta sea correcta
+import { addToCart, calculateTotalQuantity } from "../../features/cartSlice";
 const Category = () => {
     const { category } = useParams();
 
@@ -23,6 +23,7 @@ const Category = () => {
     const dispatch = useDispatch();
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));
+        dispatch(calculateTotalQuantity(product))
     };
 
     return (

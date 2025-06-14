@@ -21,8 +21,22 @@ const cartSlice = createSlice({
                 state.cartItems.push(tempProduct);
             }
             },
+         calculateTotalAmount(state) {
+            let total = 0;
+            state.cartItems.forEach(item => {
+                total += item.price * (item.cartQuantity || 1);
+            });
+            state.cartTotalAmount = total;
+        }, 
+          calculateTotalQuantity(state) {
+            let total = 0;
+            state.cartItems.forEach(item => {
+                total += item.cartQuantity;
+            });
+            state.cartTotalQuantity = total;
+        }, 
 },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, calculateTotalAmount, calculateTotalQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -22,7 +22,7 @@ const Categories = () => {
     category: "Skirts"
   }, {
     id: 4,
-    src: 'https://media.glamour.mx/photos/63a633a0edca683f98fb9fe7/master/w_1600%2Cc_limit/como_caminar_en_tacones.jpg',
+    src: 'https://luisatoledo.es/3303-category_list/zapatos-destalonados-terciopelo-rosana.jpg',
     alt: "Heels",
     category: "Heels"
   }, {
