@@ -1,8 +1,8 @@
 const Regiter = () => {
-    return ( 
+  return (
     <>
-    </> 
-    );
+    </>
+  )
 }
- 
-export default Regiter;
+
+export default Regiter
