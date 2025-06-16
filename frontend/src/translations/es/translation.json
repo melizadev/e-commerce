@@ -1,0 +1,43 @@
+{
+  "homepage" : {
+    "title1": "Tu Estilo,",
+    "title2": "Tu Esencia",
+    "clothing": "Vistiéndote con",
+    "attitute": "actitud",
+    "version": "para cada versión de ti.",
+    "style": "Encuentra tu estilo aquí.",
+    "more": "Ver más..."
+  },
+  "categories": {
+    "name": "Categorías",
+    "single_name": "Categoría",
+    "pants": "Pantalones",
+    "dresses": "Vestidos",
+    "tops": "Tops",
+    "skirts": "Faldas",
+    "heels": "Tacones"
+  },
+  "copyright": {
+    "all": "Todos los derechos reservados."
+  },
+  "header": {
+    "shipping": "Envío gratuito para todos los pedidos por encima de $50",
+    "english": "Inglés",
+    "spanish": "Español",
+    "account": "Cuenta",
+    "logout": "Salir",
+    "search": "Busque aquí..."
+  },
+  "cart": {
+    "title": "Carro de compras",
+    "empty": "Su carro está vacío.",
+    "add": "Añadir al carro",
+    "details": "Ver detalles"
+  },
+  "menu": {
+    "home": "Inicio",
+    "products": "Productos",
+    "about": "Acerca de Nosotros",
+    "contact": "Contacto"
+  }
+}

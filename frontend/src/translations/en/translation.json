@@ -1,0 +1,43 @@
+{
+  "homepage" : {
+    "title1": "Your Style,",
+    "title2": "Your Essence",
+    "clothing": "Clothing with",
+    "attitute": "attitute",
+    "version": ", for every version of you.",
+    "style": "Find your style here.",
+    "more": "See more..."
+  },
+  "categories": {
+    "name": "Categories",
+    "single_name": "Category",
+    "pants": "Pants",
+    "dresses": "Dresses",
+    "tops": "Tops",
+    "skirts": "Skirts",
+    "heels": "Heels"
+  },
+  "copyright": {
+    "all": "All rights reserved."
+  },
+  "header": {
+    "shipping": "Free shipping on all orders over $50",
+    "english": "English",
+    "spanish": "Spanish",
+    "account": "Account",
+    "logout": "Logout",
+    "search": "Search here..."
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty.",
+    "add": "Add to cart",
+    "details": "View Details"
+  },
+  "menu": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact"
+  }
+}
