@@ -32,7 +32,10 @@
     "title": "Carro de compras",
     "empty": "Su carro está vacío.",
     "add": "Añadir al carro",
-    "details": "Ver detalles"
+    "details": "Ver detalles",
+    "action_add1": "El producto",
+    "action_add2": "se ha añadido al carrito",
+    "action": "Oops, parece haber un error"
   },
   "menu": {
     "home": "Inicio",

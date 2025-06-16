@@ -2,6 +2,7 @@ import { useParams } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { addToCart, calculateTotalQuantity } from '../../features/cartSlice'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-hot-toast'
 
 const Category = () => {
   const { category } = useParams()
@@ -25,8 +26,14 @@ const Category = () => {
 
   const dispatch = useDispatch()
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-    dispatch(calculateTotalQuantity(product))
+    try {
+      dispatch(addToCart(product))
+      dispatch(calculateTotalQuantity(product))
+      toast.success(`${t('cart.action_add1')} ${product?.title} ${t('cart.action_add2')}`)
+    } catch (error) {
+      console.error(error)
+      toast.error('Oops, there seems to be an error')
+    }
   }
 
   return (

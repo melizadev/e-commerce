@@ -32,7 +32,10 @@
     "title": "Shopping Cart",
     "empty": "Your cart is empty.",
     "add": "Add to cart",
-    "details": "View Details"
+    "details": "View Details",
+    "action_add1": "Successfully added",
+    "action_add2": "to the cart",
+    "action": "Oops, there seems to be an error"
   },
   "menu": {
     "home": "Home",
