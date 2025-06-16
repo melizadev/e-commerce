@@ -1,8 +1,11 @@
 import { useParams } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { addToCart, calculateTotalQuantity } from '../../features/cartSlice'
+import { useTranslation } from 'react-i18next'
+
 const Category = () => {
   const { category } = useParams()
+  const { t } = useTranslation()
 
   const products = [
     { id: 1, title: 'Elegant Dress', slug: 'elegant-dress', price: 59.99, category: 'Dresses' },
@@ -38,15 +41,15 @@ const Category = () => {
                 filteredProducts.map((product) => (
                   <div key={product.id} className='bg-white border border-gray-200 p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300'>
                     <h2 className='text-lg text-gray-700 font-semibold mb-2'>{product.title}</h2>
-                    <p className='text-gray-600 mb-2'>Category: {product.category}</p>
+                    <p className='text-gray-600 mb-2'>{t('categories.single_name')}: {product.category}</p>
                     <p className='text-xl font-bold text-gray-600'>${product.price.toFixed(2)}</p>
                     <div className='flex justify-around items-center mt-4'>
-                      <button className='mt-3 px-2 py-2 rounded bg-[#bb95a6] text-[#ffffff] hover:shadow-md transition-colors duration-300 cursor-pointer'>
-                        View Details
-                                </button>
+                      <button className='mt-3 px-2 py-2 rounded bg-[#bb95a6] text-[#ffffff]   hover:shadow-md transition-colors duration-300 cursor-pointer'>
+                        {t('cart.details')}
+                      </button>
                       <button onClick={() => handleAddToCart(product)} className='mt-3 border border-[#6BD425]  text-gray-500 px-2 py-2 rounded hover:shadow-md transition-shadow duration-300 cursor-pointer'>
-                        Add to cart
-                                </button>
+                        {t('cart.add')}
+                      </button>
                     </div>
 
                   </div>

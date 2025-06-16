@@ -4,6 +4,8 @@ import './index.css'
 import Mainlayout from './pages/mainlayout/Mainlayout.jsx'
 import { Provider } from 'react-redux'
 import { store } from './store.js'
+import './translations/i18n.js'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>

@@ -1,9 +1,15 @@
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+
 const ShoppingCart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems)
+  const { t } = useTranslation()
+
   return (
     <div className='w-full min-h-[calc(100vh-160px)] flex flex-col items-start justify-start bg-white p-4'>
-      <h1 className='text-gray-600 text-2xl'>Shopping Cart</h1>
+      <h1 className='text-gray-600 text-2xl'>
+        {t('cart.title')}
+      </h1>
       <div className='w-full mt-4'>
         {cartItems?.length > 0
           ? (
@@ -21,7 +27,9 @@ const ShoppingCart = () => {
               ))
             )
           : (
-            <p className='text-gray-500'>Your cart is empty.</p>
+            <p className='text-gray-500'>
+              {t('cart.empty')}
+            </p>
             )}
       </div>
     </div>

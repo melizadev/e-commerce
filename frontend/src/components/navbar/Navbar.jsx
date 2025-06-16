@@ -2,7 +2,11 @@ import { Check, Info, Search, ShoppingCart, Heart, User, Menu } from 'lucide-rea
 import { Link, useNavigate } from 'react-router'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import LanguageSelector from '../LanguageSelector/LanguageSelector'
+import { useTranslation } from 'react-i18next'
+
 const Navbar = () => {
+  const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navigate = useNavigate()
   const handleMenu = () => {
@@ -22,16 +26,10 @@ const Navbar = () => {
       <div className='navbar_top w-full flex items-center h-[45px] justify-center bg-[#ffffff]'>
         <div className='container flex justify-between items-center'>
           <p className='text-sm flex items-center gap-1 font-inter font-normal text-gray-500 capitalize'><Check />
-            Free shipping on all orders over $50
+            {t('header.shipping')}
           </p>
           <div className='navbar_top_right  items-center gap-3 lg:flex md:flex hidden'>
-            <select
-              defaultValue='Server location' className='select select-neutral h-[30px] border border-[#c5c5c5] w-auto text-sm
-            font-normal capitalize text-gray-500 bg-transparent outline-none focus:outline-none rounded'
-            >
-              <option className='text-black'>eng</option>
-              <option className='text-black'>bangla</option>
-            </select>
+            <LanguageSelector />
             <button><Link className='text-sm text-gray-500 font-inter font-normal capitalize'>Faqs</Link></button>
             <button><Link className='flex items-center gap-1 text-sm text-gray-500   font-inter font-normal capitalize'> <Info /></Link></button>
           </div>
@@ -46,7 +44,7 @@ const Navbar = () => {
           </button>
           <div className='hidden lg:flex md:flex items-center search_box justify-center'>
             <form action='#' className=' w-[400px] h-[35px] relative'>
-              <input type='text' placeholder='Search here...' className=' w-full h-full bg-white border-none text-gray-500 rounded-lg  pl-4 outline-none focus:outline-none' />
+              <input type='text' placeholder={t('header.search')} className=' w-full h-full bg-white border-none text-gray-500 rounded-lg  pl-4 outline-none focus:outline-none' />
               <button className='absolute right-4 top-[5px] cursor-pointer'><Search size='24px' color='#272343' /></button>
             </form>
           </div>
@@ -63,8 +61,16 @@ const Navbar = () => {
             <div className='dropdown'>
               <div tabIndex={0} role='button' className='btn m-1  bg-transparent border-none shadow-none'><User color='#574c41' /></div>
               <ul tabIndex={0} className='dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm'>
-                <li><Link>Account</Link></li>
-                <li><Link>Logout</Link></li>
+                <li>
+                  <Link>
+                    {t('header.account')}
+                  </Link>
+                </li>
+                <li>
+                  <Link>
+                    {t('header.logout')}
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -77,10 +83,18 @@ const Navbar = () => {
             <button onClick={handleMenu} className='text-2xl'><Menu /></button>
           </div>
           <div className='flex flex-col items-center mt-10'>
-            <Link to='/' className='py-2 text-xl font-bold text-[#9c5e5e]'>Home</Link>
-            <Link to='/products' className='py-2 text-xl font-bold text-[#9c5e5e]'>Products</Link>
-            <Link to='/about' className='py-2 text-xl font-bold text-[#9c5e5e]'>About Us</Link>
-            <Link to='/contact' className='py-2 text-xl font-bold text-[#9c5e5e]'><h2>Contact</h2></Link>
+            <Link to='/' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+              {t('menu.home')}
+            </Link>
+            <Link to='/products' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+              {t('menu.products')}
+            </Link>
+            <Link to='/about' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+              {t('menu.about')}
+            </Link>
+            <Link to='/contact' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+              <h2> { t('menu.contact') } </h2>
+            </Link>
           </div>
         </div>
       )}
