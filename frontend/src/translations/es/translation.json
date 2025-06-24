@@ -35,12 +35,23 @@
     "details": "Ver detalles",
     "action_add1": "El producto",
     "action_add2": "se ha añadido al carrito",
-    "action": "Oops, parece haber un error"
+    "action": "Oops, parece haber un error",
+    "total_articles": "Total de articulos",
+    "total_amount": "Monto total: ",
+    "place_order" : "Confirmar Pedido"
   },
   "menu": {
     "home": "Inicio",
     "products": "Productos",
     "about": "Acerca de Nosotros",
     "contact": "Contacto"
+  },
+  "filter": {
+    "filter": "Filtrar:",
+    "min_price": "Precio Min",
+    "max_price": "Precio Max",
+    "category": "Categoria",
+    "articles": "Articulos",
+    "all": "Todos"
   }
 }

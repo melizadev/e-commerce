@@ -22,7 +22,7 @@ const Navbar = () => {
   const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity)
 
   return (
-    <div>
+    <div className='w-full flex flex-col items-center justify-center bg-[#ffffff]'>
       <div className='navbar_top w-full flex items-center h-[45px] justify-center bg-[#ffffff]'>
         <div className='container flex justify-between items-center'>
           <p className='text-sm flex items-center gap-1 font-inter font-normal text-gray-500 capitalize'><Check />
@@ -31,7 +31,7 @@ const Navbar = () => {
           <div className='navbar_top_right  items-center gap-3 lg:flex md:flex hidden'>
             <LanguageSelector />
             <button><Link className='text-sm text-gray-500 font-inter font-normal capitalize'>Faqs</Link></button>
-            <button><Link className='flex items-center gap-1 text-sm text-gray-500   font-inter font-normal capitalize'> <Info /></Link></button>
+            <button><Link className='flex items-center gap-1 text-sm text-gray-500 font-inter font-normal capitalize'> <Info /></Link></button>
           </div>
         </div>
       </div>
@@ -73,10 +73,10 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>
+
       {isMenuOpen && (
         <div className='lg:hidden md:hidden absolute top-0 left-0 w-full h-screen bg-white z-50'>
           <div className='flex justify-end p-4'>
@@ -93,11 +93,12 @@ const Navbar = () => {
               {t('menu.about')}
             </Link>
             <Link to='/contact' className='py-2 text-xl font-bold text-[#9c5e5e]'>
-              <h2> { t('menu.contact') } </h2>
+              <h2> {t('menu.contact')} </h2>
             </Link>
           </div>
         </div>
       )}
+      <div></div>
     </div>
   )
 }

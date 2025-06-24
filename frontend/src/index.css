@@ -8,14 +8,12 @@
 
 }
 
-.slick-slide>div{
-    margin: 0 10px;
-}
+  .slick-prev:before,
+    .slick-next:before {
+      color: rgb(161, 161, 161) !important; /* Cambia el color a azul */
+    }
+    .slick-prev,
+    .slick-next {
+      background-color: rgb(255, 255, 255);
+    }
 
-.slick-prev:before,
-.slick-next:before {
-color: rgb(207, 113, 168);
-}
-a, Link{
-text-decoration: none;
-}

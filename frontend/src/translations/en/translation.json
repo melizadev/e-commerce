@@ -35,12 +35,26 @@
     "details": "View Details",
     "action_add1": "Successfully added",
     "action_add2": "to the cart",
-    "action": "Oops, there seems to be an error"
+    "action": "Oops, there seems to be an error",
+    "total_articles": "Total Articles: ",
+    "total_amount": "Total Amount: ",
+    "place_order" : "Place Order"
+
   },
   "menu": {
     "home": "Home",
     "products": "Products",
     "about": "About Us",
     "contact": "Contact"
+  },
+  "filter": {
+    "filter": "Filter: ",
+    "min_price": "Min Price",
+    "max_price": "Max Price",
+    "category": "Category",
+    "articles": "Articles",
+    "all": "all"
+
   }
 }
+
