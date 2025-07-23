@@ -11,10 +11,10 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <Mainlayout />
-         <Toaster
-        position="top-center"
+      <Toaster
+        position='top-center'
         reverseOrder={false}
       />
-      </Provider>
+    </Provider>
   </StrictMode>
 )

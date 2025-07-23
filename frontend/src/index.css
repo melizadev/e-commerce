@@ -10,10 +10,11 @@
 
   .slick-prev:before,
     .slick-next:before {
-      color: rgb(161, 161, 161) !important; /* Cambia el color a azul */
+      color: rgb(82, 82, 82) !important; /* Cambia el color a azul */
+      size: 30px; 
     }
-    .slick-prev,
-    .slick-next {
-      background-color: rgb(255, 255, 255);
+   
+     .slick-prev{
+      display: absolute;
+      left: 30px; /* Ajusta la posición derecha */
     }
-

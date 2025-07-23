@@ -35,16 +35,16 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className='navbar-middle w-full flex items-center justify-center border-b border-gray-200 bg-[#e9c4ff] h-[45px]'>
+      <div className='navbar-middle w-full flex items-center justify-center bg-white h-[45px] border-t border-gray-200'>
         <div className='container px-4 gap-2 flex justify-between items-center md:justify-between lg:justify-between'>
-          <Link to='/'><h1 className='text-4xl font-extrabold text-white mb-2'>BE-U</h1></Link>
+          <Link to='/'><h1 className='text-4xl font-extrabold text-gray-300 mb-2'>BE-U</h1></Link>
 
           <button onClick={handleMenu} className='block md:hidden lg:hidden cursor-pointer'>
-            <Menu />
+            <Menu color='#4a5565'/>
           </button>
           <div className='hidden lg:flex md:flex items-center search_box justify-center'>
             <form action='#' className=' w-[400px] h-[35px] relative'>
-              <input type='text' placeholder={t('header.search')} className=' w-full h-full bg-white border-none text-gray-500 rounded-lg  pl-4 outline-none focus:outline-none' />
+              <input type='text' placeholder={t('header.search')} className=' w-full h-full bg-white border-b border-gray-200 text-pink-500 pl-2 outline-none focus:outline-none' />
               <button className='absolute right-4 top-[5px] cursor-pointer'><Search size='24px' color='#272343' /></button>
             </form>
           </div>
@@ -78,27 +78,28 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className='lg:hidden md:hidden absolute top-0 left-0 w-full h-screen bg-white z-50'>
-          <div className='flex justify-end p-4'>
-            <button onClick={handleMenu} className='text-2xl'><Menu /></button>
-          </div>
-          <div className='flex flex-col items-center mt-10'>
-            <Link to='/' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+        <div className='lg:hidden md:hidden w-full bg-white z-50 border-b border-gray-200'>
+          <div className='flex flex-col items-center'>
+             <form action='#' className=' w-full h-[35px] relative px-4'>
+              <input type='text' placeholder={t('header.search')} className=' w-full h-full bg-white border-b border-gray-200 text-pink-500 pl-2 outline-none focus:outline-none' />
+              <button className='absolute right-4 top-[5px] cursor-pointer'><Search size='24px' color='#272343' /></button>
+            </form>
+            <Link to='/' className='py-2 text-1xl font-bold  text-gray-600'>
               {t('menu.home')}
             </Link>
-            <Link to='/products' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+            <Link to='/products' className='py-2 text-1xl font-bold text-gray-600'>
               {t('menu.products')}
             </Link>
-            <Link to='/about' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+            <Link to='/about' className='py-2 text-1xl font-bold  text-gray-600'>
               {t('menu.about')}
             </Link>
-            <Link to='/contact' className='py-2 text-xl font-bold text-[#9c5e5e]'>
+            <Link to='/contact' className='py-2 text-1xl font-bold  text-gray-600'>
               <h2> {t('menu.contact')} </h2>
             </Link>
           </div>
         </div>
       )}
-      <div></div>
+      <div />
     </div>
   )
 }

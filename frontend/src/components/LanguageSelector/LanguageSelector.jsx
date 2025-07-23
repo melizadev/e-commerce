@@ -9,7 +9,7 @@ const LanguageSelector = () => {
   const { i18n, t } = useTranslation()
 
   const onChange = (e) => {
-    let language = e.target.value
+    const language = e.target.value
     i18n.changeLanguage(language)
   }
 
@@ -21,12 +21,12 @@ const LanguageSelector = () => {
       {
         Object.keys(languages)?.map(language => {
           return (
-            <option 
-              key={language} 
+            <option
+              key={language}
               className='text-black'
               value={language}
             >
-              { t(`header.${languages[language]?.nativeName}`) }
+              {t(`header.${languages[language]?.nativeName}`)}
             </option>
           )
         })

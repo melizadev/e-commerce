@@ -19,9 +19,9 @@ const Category = ({ products, handleAddToCart }) => {
                   <div key={product.id} className='w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-sm transition-shadow duration-300'>
                     <h2 className='px-2 text-gray-700 font-semibold'>{product.title}</h2>
                     <p className='mb-1 px-2 font-bold text-gray-600'>${product.price.toFixed(2)}</p>
-                      <button   onClick={() => handleAddToCart(product)} className='w-full block border-t border-gray-200 font-semibold  text-gray-400 py-1 hover:bg-gray-50 duration-200 cursor-pointer'>
-                        {t('cart.add')}
-                      </button>
+                    <button onClick={() => handleAddToCart(product)} className='w-full block border-t border-gray-200 font-semibold  text-gray-400 py-1 hover:bg-gray-50 duration-200 cursor-pointer'>
+                      {t('cart.add')}
+                    </button>
                   </div>
                 ))
               )

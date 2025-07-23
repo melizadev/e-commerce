@@ -6,7 +6,7 @@
     "attitute": "attitute",
     "version": ", for every version of you.",
     "style": "Find your style here.",
-    "more": "See more..."
+    "more": "See more"
   },
   "categories": {
     "name": "Categories",
@@ -48,13 +48,28 @@
     "contact": "Contact"
   },
   "filter": {
-    "filter": "Filter: ",
     "min_price": "Min Price",
     "max_price": "Max Price",
     "category": "Category",
     "articles": "Articles",
     "all": "all"
 
+  },
+  "offers": {
+    "title": "Discover the best offers on clothing and footwear.",
+    "subtitle": "Check out our discounts from 15% to 50% off selected products.",
+    "button": "See Offers"
+  },
+  "footer": {
+    "contact": "Contact",
+    "follow": "Follow Us",
+    "location": "Location",
+    "help": "Help",
+    "faqs": "Faqs",
+    "shipping": "Shipping and returns",
+    "privacy": "Privacy Policy",
+    "rights": "Be U. All Rights Reserved", 
+    "Spain": "Spain"
   }
 }
 
