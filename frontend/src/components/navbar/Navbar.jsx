@@ -37,7 +37,7 @@ const Navbar = () => {
       </div>
       <div className='navbar-middle w-full flex items-center justify-center bg-white h-[45px] border-t border-gray-200'>
         <div className='container px-4 gap-2 flex justify-between items-center md:justify-between lg:justify-between'>
-          <Link to='/'><h1 className='text-4xl font-extrabold text-gray-300 mb-2'>BE-U</h1></Link>
+          <Link to='/'><h1 className='text-4xl font-extrabold text-gray-500 mb-2'>BE-U</h1></Link>
 
           <button onClick={handleMenu} className='block md:hidden lg:hidden cursor-pointer'>
             <Menu color='#4a5565'/>
