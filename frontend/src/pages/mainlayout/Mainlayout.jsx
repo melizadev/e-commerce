@@ -1,20 +1,24 @@
+import { ShoppingBag } from "lucide-react";
 import Home from "../../pages/home/Home";
 import Auth from "../../auth/auth";
 import Login from "../../auth/login/Login";
 import Register from "../../register/Register";
 import Error from "../../pages/error/error";
 import AuthCheck from "../authcheck/AuthCheck";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { Route, Routes, Link } from "react-router";
 import Navbar from "../../components/navbar/Navbar";
 import Category from "../../components/category/Category";
 import Footer from "../../components/footer/Footer";
-import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
+import ShoppingCar from "../../components/shoppingCart/ShoppingCar";
 import { useDispatch } from "react-redux";
 import { addToCart, calculateTotalQuantity } from "../../features/cartSlice";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import ShowResults from "../../components/navbar/ShowResults";
+import { useState } from "react";
 const Mainlayout = () => {
   const { t } = useTranslation();
+  const [searchResults, setSearchResults] = useState([]); // Nuevo estado para guardar resultados
   const products = [
     {
       id: 1,
@@ -113,7 +117,17 @@ const Mainlayout = () => {
       dispatch(addToCart(product));
       dispatch(calculateTotalQuantity(product));
       toast.success(
-        `${t("cart.action_add1")} ${product?.title} ${t("cart.action_add2")}`
+        <div className="relative p-2">
+          {t("cart.action_add1")} {product?.title} {t("cart.action_add2")}
+          <div title={t("cart.title")}>
+            <Link
+              to="/shoppingCart"
+              className="absolute right-[8px] top-[50%] pt-1"
+            >
+              <ShoppingBag color="gray" />
+            </Link>
+          </div>
+        </div>
       );
     } catch (error) {
       console.error(error);
@@ -122,11 +136,15 @@ const Mainlayout = () => {
   };
 
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      <Navbar
+        products={products}
+        setSearchResults={setSearchResults}
+        searchResults={searchResults}
+      />
       <Routes>
         <Route
-          path="/"
+          path="/home"
           element={
             <AuthCheck>
               <Home products={products} handleAddToCart={handleAddToCart} />
@@ -139,7 +157,11 @@ const Mainlayout = () => {
             <Category products={products} handleAddToCart={handleAddToCart} />
           }
         />
-        <Route path="/shoppingCart" element={<ShoppingCart />} />
+        <Route
+          path="/ShowResults/:search"
+          element={<ShowResults searchResults={searchResults} />}
+        />
+        <Route path="/shoppingCart" element={<ShoppingCar />} />
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
@@ -147,7 +169,7 @@ const Mainlayout = () => {
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </>
   );
 };
 

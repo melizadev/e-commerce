@@ -1,5 +1,5 @@
 {
-  "homepage" : {
+  "homepage": {
     "title1": "Tu Estilo,",
     "title2": "Tu Esencia",
     "clothing": "Vistiéndote con",
@@ -36,9 +36,14 @@
     "action_add1": "El producto",
     "action_add2": "se ha añadido al carrito",
     "action": "Oops, parece haber un error",
-    "total_articles": "Total de articulos",
+    "total_articles": "Total de articulos: ",
     "total_amount": "Monto total: ",
-    "place_order" : "Confirmar Pedido"
+    "place_order": "Confirmar Pedido",
+    "delete": "Eliminar",
+    "product": "Producto",
+    "deleted": "Eliminado",
+    "successfully": "Correctamente",
+    "quantity": "Cant: "
   },
   "menu": {
     "home": "Inicio",
@@ -66,7 +71,7 @@
     "faqs": "Faqs",
     "shipping": "Envio y Devoluciones",
     "privacy": "Politica de Privacidad",
-    "rights": "Be U. Todos los derechos reservados", 
+    "rights": "Be U. Todos los derechos reservados",
     "Spain": "España"
   }
 }

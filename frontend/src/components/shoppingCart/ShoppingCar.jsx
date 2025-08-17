@@ -1,29 +1,50 @@
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { calculateTotalAmount } from "../../features/cartSlice";
+import {
+  calculateTotalAmount,
+  calculateTotalQuantity,
+  removeFromCart,
+} from "../../features/cartSlice";
+import { toast } from "react-hot-toast";
+import { Trash2 } from "lucide-react";
 
-const ShoppingCart = () => {
+const ShoppingCar = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotalQuantity = useSelector(
     (state) => state.cart.cartTotalQuantity
   );
   const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
-  const { t } = useTranslation();
+  const handleDeleteProduct = (item) => {
+    try {
+      dispatch(removeFromCart(item));
+      dispatch(calculateTotalQuantity(item));
+      toast.success(
+        <div className="relative p-2">
+          {t("cart.product")} {t("cart.deleted")} {t("cart.successfully")}
+        </div>
+      );
+    } catch (error) {
+      console.error(error);
+      toast.error("Oops, there seems to be an error");
+    }
+  };
 
   useEffect(() => {
     dispatch(calculateTotalAmount(cartItems));
   }, [cartItems, dispatch]);
 
   return (
-    <div className="w-full min-h-[calc(100vh-160px)]  flex items-center justify-center bg-white">
-      <div className="w-[95%] h-[430px] mx-auto border border-gray-100 rounded-lg shadow-sm flex flex-col justify-between items">
-        <div className="bg-white border-b border-gray-200 rounded-t-lg flex items-center justify-between px-4 py-2">
+    <div className="w-full min-h-[86vh]  flex items-center justify-center bg-white">
+      <div className="w-[85%] h-[500px] mx-auto border border-gray-200 rounded-lg shadow-sm flex flex-col justify-between items">
+        <div className="bg-white border-b border-gray-200 rounded-t-lg flex items-center justify-between p-2">
           <h1 className="text-gray-500 text-2xl pl-2">{t("cart.title")}</h1>
           {cartItems?.length > 0 && (
             <p className="border border-gray-300 rounded-lg text-gray-600 text-center p-2">
-              {t("cart.total_articles")} {cartTotalQuantity}
+              {t("cart.total_articles")}
+              {cartTotalQuantity}
             </p>
           )}
         </div>
@@ -32,13 +53,13 @@ const ShoppingCart = () => {
             cartItems.map((item) => (
               <div
                 key={item?.id}
-                className="w-full h-[50px] flex items-center justify-between p-2 border-gray-200 odd:bg-gray-50 even:bg-gray-100 "
+                className="w-full h-[100px] flex items-center justify-between p-1 border-gray-200 odd:bg-gray-50 even:bg-gray-100 "
               >
                 <div className="flex items-center">
                   <img
                     src={item?.image}
                     alt={item?.title}
-                    className="w-10 h-10 object-cover rounded mr-4"
+                    className="w-20 h-20 object-cover mr-4"
                   />
                   <div>
                     <h2 className="text-gray-700 font-semibold text-base">
@@ -49,7 +70,19 @@ const ShoppingCart = () => {
                     </p>
                   </div>
                 </div>
-                <span className="text-gray-600">Qty: {item?.cartQuantity}</span>
+                <div className="flex items-center p-1">
+                  <span className="text-gray-600 bg-white border-r border-gray-200 p-1 rounded">
+                    {t("cart.quantity")} {item?.cartQuantity}
+                  </span>
+                  <div title={t("cart.delete")} className="flex items-center">
+                    <button
+                      onClick={() => handleDeleteProduct(item)}
+                      className="ml-1 text-gray-500 hover:text-gray-700 cursor-pointer p-1"
+                    >
+                      <Trash2 size={20} />
+                    </button>
+                  </div>
+                </div>
               </div>
             ))
           ) : (
@@ -73,4 +106,4 @@ const ShoppingCart = () => {
   );
 };
 
-export default ShoppingCart;
+export default ShoppingCar;

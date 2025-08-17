@@ -1,5 +1,5 @@
 {
-  "homepage" : {
+  "homepage": {
     "title1": "Your Style,",
     "title2": "Your Essence",
     "clothing": "Clothing with",
@@ -38,8 +38,12 @@
     "action": "Oops, there seems to be an error",
     "total_articles": "Total Articles: ",
     "total_amount": "Total Amount: ",
-    "place_order" : "Place Order"
-
+    "place_order": "Place Order",
+    "delete": "Delete",
+    "product": "Product",
+    "deleted": "Deleted",
+    "successfully": "Successfully",
+    "quantity": "Qty: "
   },
   "menu": {
     "home": "Home",
@@ -53,7 +57,6 @@
     "category": "Category",
     "articles": "Articles",
     "all": "all"
-
   },
   "offers": {
     "title": "Discover the best offers on clothing and footwear.",
@@ -68,8 +71,7 @@
     "faqs": "Faqs",
     "shipping": "Shipping and returns",
     "privacy": "Privacy Policy",
-    "rights": "Be U. All Rights Reserved", 
+    "rights": "Be U. All Rights Reserved",
     "Spain": "Spain"
   }
 }
-
