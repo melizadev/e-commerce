@@ -2,26 +2,21 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -36,17 +31,17 @@ jobs:
         with:
           node-version: lts/*
           cache: "npm"
-          # La caché usa una ruta relativa a la raíz del repositorio
+          # La caché de npm necesita saber dónde está el lockfile desde la raíz del repo.
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        # Establece el directorio de trabajo para este paso
+        # Aquí le decimos a npm que se mueva a la carpeta `frontend` para ejecutar el comando.
         working-directory: frontend
 
       - name: Build
         run: npm run build
-        # Establece el directorio de trabajo para este paso
+        # Y aquí también, para que el comando `build` se ejecute en el lugar correcto.
         working-directory: frontend
         
       - name: Setup Pages
@@ -55,7 +50,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # La ruta al directorio 'dist' desde la raíz del repositorio
+          # Esta ruta debe ser desde la raíz del repositorio.
+          # La carpeta 'dist' se crea dentro de `frontend` durante el build.
           path: "frontend/dist"
 
       - name: Deploy to GitHub Pages
