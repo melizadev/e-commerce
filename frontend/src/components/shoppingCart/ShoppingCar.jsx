@@ -23,7 +23,7 @@ const ShoppingCar = () => {
       dispatch(calculateTotalQuantity(item));
       toast.success(
         <div className="relative p-2">
-          {t("cart.product")} {t("cart.deleted")} {t("cart.successfully")}
+          {item.title} {t("cart.deleted")} {t("cart.successfully")}
         </div>
       );
     } catch (error) {
