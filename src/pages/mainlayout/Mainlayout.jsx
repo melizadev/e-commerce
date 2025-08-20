@@ -144,7 +144,7 @@ const Mainlayout = () => {
       />
       <Routes>
         <Route
-          path="/home"
+          path="/e-commerce"
           element={
             <AuthCheck>
               <Home products={products} handleAddToCart={handleAddToCart} />

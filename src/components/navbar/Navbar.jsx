@@ -24,7 +24,7 @@ const Navbar = ({ products, setSearchResults }) => {
   };
   const handleCartClick = () => {
     if (window.location.pathname === "/shoppingCart") {
-      navigate("/home");
+      navigate("/e-commerce");
     } else {
       navigate("/shoppingCart");
     }
@@ -81,7 +81,7 @@ const Navbar = ({ products, setSearchResults }) => {
       </div>
       <div className="navbar-middle w-full flex items-center justify-center bg-white h-[45px] border-t border-gray-200">
         <div className="container px-4 gap-2 flex justify-between items-center md:justify-between lg:justify-between">
-          <Link to="/home">
+          <Link to="/e-commerce">
             <h1 className="text-4xl font-extrabold text-gray-500 mb-2">BE-U</h1>
           </Link>
 

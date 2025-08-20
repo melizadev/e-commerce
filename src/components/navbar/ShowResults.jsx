@@ -6,7 +6,7 @@ const ShowResults = ({ searchResults }) => {
       <div className=" min-h-[calc(100vh-160px)] w-full text-center text-gray-500 py-8 bg-white flex flex-col items-center justify-center">
         <h2> Lo sentimos, no tenemos un resultado para tu búsqueda</h2>
         <span className="flex">
-          <Link className="font-semibold mr-2" to="/home">
+          <Link className="font-semibold mr-2" to="/e-commerce">
             Volver al Inicio
           </Link>
           <MoveRight />
