@@ -27,30 +27,37 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      # Set the working directory to the frontend folder
-      run:
-        working-directory: frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: "npm"
+          # La caché usa una ruta relativa a la raíz del repositorio
           cache-dependency-path: frontend/package-lock.json
+
       - name: Install dependencies
         run: npm ci
+        # Establece el directorio de trabajo para este paso
+        working-directory: frontend
+
       - name: Build
         run: npm run build
+        # Establece el directorio de trabajo para este paso
+        working-directory: frontend
+        
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist folder
+          # La ruta al directorio 'dist' desde la raíz del repositorio
           path: "frontend/dist"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
