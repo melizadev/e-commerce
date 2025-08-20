@@ -3,7 +3,7 @@ import Home from "../../pages/home/Home";
 import Auth from "../../auth/auth";
 import Login from "../../auth/login/Login";
 import Register from "../../register/Register";
-import Error from "../../pages/error/error";
+import Error from "../../pages/error/Error";
 import AuthCheck from "../authcheck/AuthCheck";
 import { Route, Routes, Link } from "react-router";
 import Navbar from "../../components/navbar/Navbar";
