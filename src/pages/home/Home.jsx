@@ -1,6 +1,6 @@
 import Categories from "../../components/categories/Categories";
 import Banner from "../../components/banner/Banner";
-import AllArticles from "../../components/allArticles/AllArticles";
+import AllArticles from "../../components/allarticles/AllArticles";
 import Descount from "../../components/Descount";
 const Home = ({ products, handleAddToCart }) => {
   return (
