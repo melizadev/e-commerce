@@ -152,16 +152,16 @@ const Mainlayout = () => {
           }
         />
         <Route
-          path="/:category"
+          path="/e-commerce/:category"
           element={
             <Category products={products} handleAddToCart={handleAddToCart} />
           }
         />
         <Route
-          path="/ShowResults/:search"
+          path="/e-commerce/ShowResults/:search"
           element={<ShowResults searchResults={searchResults} />}
         />
-        <Route path="/shoppingCart" element={<ShoppingCar />} />
+        <Route path="/e-commerce/shoppingCart" element={<ShoppingCar />} />
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

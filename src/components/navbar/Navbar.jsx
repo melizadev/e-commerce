@@ -26,14 +26,13 @@ const Navbar = ({ products, setSearchResults }) => {
     if (window.location.pathname === "/shoppingCart") {
       navigate("/e-commerce");
     } else {
-      navigate("/shoppingCart");
+      navigate("/e-commerce/shoppingCart");
     }
   };
   const cartTotalQuantity = useSelector(
     (state) => state.cart.cartTotalQuantity
   );
 
-  // Resultados filtrados en tiempo real (solo para mostrar en el dropdown)
   const filteredProducts =
     searchText.trim().length > 0
       ? products?.filter((product) =>
@@ -52,7 +51,23 @@ const Navbar = ({ products, setSearchResults }) => {
       setSearchResults([]);
     }
     setShowResults(false);
-    navigate(`/ShowResults/${searchText.trim()}`);
+    navigate(`/e-commerce/ShowResults/${searchText.trim()}`);
+  };
+
+  const handleChange = (e) => {
+    setSearchText(e.target.value);
+    setShowResults(true);
+    let results = [];
+    if (e.target.value.trim().length > 0) {
+      results = products?.filter((product) =>
+        product.title.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setSearchResults(results);
+      navigate(`/e-commerce/ShowResults/${e.target.value.trim()}`);
+    } else {
+      setSearchResults([""]);
+      navigate(`/e-commerce`);
+    }
   };
 
   return (
@@ -103,10 +118,7 @@ const Navbar = ({ products, setSearchResults }) => {
                 placeholder={t("header.search")}
                 className="w-full h-full bg-white border-b border-gray-200 text-pink-500 pl-2 outline-none focus:outline-none"
                 value={searchText}
-                onChange={(e) => {
-                  setSearchText(e.target.value);
-                  setShowResults(true);
-                }}
+                onChange={handleChange}
                 onFocus={() => setShowResults(true)}
                 onBlur={() => setTimeout(() => setShowResults(false), 150)}
               />
@@ -121,21 +133,22 @@ const Navbar = ({ products, setSearchResults }) => {
                 <div className="absolute left-0 top-[40px] w-full bg-white border border-gray-200 rounded shadow-lg z-50 max-h-64 overflow-y-auto">
                   {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
-                      <Link
-                        to={`/product/${product.id}`}
+                      <button
                         key={product.id}
-                        className="block px-4 py-2 hover:bg-gray-100 text-gray-700"
-                        onClick={() => {
+                        className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700"
+                        onMouseDown={() => {
                           setShowResults(false);
                           setSearchText("");
+                          setSearchResults([product]);
+                          navigate(`/ShowResults/${product.title}`);
                         }}
                       >
                         {product.title}
-                      </Link>
+                      </button>
                     ))
                   ) : (
                     <div className="px-4 py-2 text-gray-400">
-                      Producto no encontrado
+                      {t("searcher.not_found")}{" "}
                     </div>
                   )}
                 </div>

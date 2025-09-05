@@ -73,5 +73,11 @@
     "privacy": "Politica de Privacidad",
     "rights": "Be U. Todos los derechos reservados",
     "Spain": "España"
+  },
+  "searcher": {
+    "home": "Volver al Inicio",
+    "no_results": "Lo sentimos, no tenemos resultados para tu búsqueda",
+    "results_for": "Resultados para tu busqueda: ",
+    "not_found": "Producto no encontrado."
   }
 }

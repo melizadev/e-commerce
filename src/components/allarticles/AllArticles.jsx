@@ -71,9 +71,11 @@ const AllArticles = ({ products, handleAddToCart }) => {
               </div>
             ))
           ) : (
-            <p className="col-span-full text-center text-gray-500">
-              No products found.
-            </p>
+            <div className="col-span-full flex justify-center items-center h-full">
+                <p className="col-span-full text-center text-gray-500">
+                  {t("searcher.not_found" )}
+                 </p>
+            </div>
           )}
         </div>
       </div>

@@ -73,5 +73,11 @@
     "privacy": "Privacy Policy",
     "rights": "Be U. All Rights Reserved",
     "Spain": "Spain"
+  },
+  "searcher": {
+    "home": "Go back to home.",
+    "no_results": "We couldn’t find any results for your search.",
+    "results_for": "Results for your search: ",
+    "not_found": "Product not Found"
   }
 }

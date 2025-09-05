@@ -7,10 +7,10 @@ const Category = ({ products, handleAddToCart }) => {
     (product) => product.category.toLowerCase() === category?.toLowerCase()
   );
   return (
-    <div className="w-full min-h-[calc(100vh-160px)] bg-[#ffff] p-4">
+    <div className="w-full min-h-[86vh] bg-[#ffff] p-4">
       <div className="container">
         <h1 className="px-3 text-[40px] text-[#6b6b6b] pb-3 capitalize">
-          {category}
+          {t(`categories.${category}`) || category}
         </h1>
         <div className="w-full px-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5 items-center justify-center md:justify-start lg:justify-start ">
           {filteredProducts.length > 0 ? (
