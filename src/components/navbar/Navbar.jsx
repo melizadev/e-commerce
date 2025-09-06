@@ -140,7 +140,7 @@ const Navbar = ({ products, setSearchResults }) => {
                           setShowResults(false);
                           setSearchText("");
                           setSearchResults([product]);
-                          navigate(`/ShowResults/${product.title}`);
+                          navigate(`/e-commerce/ShowResults/${product.title}`);
                         }}
                       >
                         {product.title}
