@@ -121,7 +121,7 @@ const Mainlayout = () => {
           {t("cart.action_add1")} {product?.title} {t("cart.action_add2")}
           <div title={t("cart.title")}>
             <Link
-              to="/shoppingCart"
+              to="/e-commerce/shoppingCart"
               className="absolute right-[8px] top-[50%] pt-1"
             >
               <ShoppingBag color="gray" />

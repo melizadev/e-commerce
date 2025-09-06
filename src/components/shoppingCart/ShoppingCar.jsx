@@ -87,7 +87,7 @@ const ShoppingCar = () => {
             ))
           ) : (
             <div className="flex flex-1 items-center justify-center h-full w-full">
-              <p className="text-gray-400 text-center">{t("cart.empty")}</p>
+              <p className="text-gray-500 text-center">{t("cart.empty")}</p>
             </div>
           )}
         </div>

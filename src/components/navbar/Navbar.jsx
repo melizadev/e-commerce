@@ -23,7 +23,7 @@ const Navbar = ({ products, setSearchResults }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   const handleCartClick = () => {
-    if (window.location.pathname === "/shoppingCart") {
+    if (window.location.pathname === "/e-commerce/shoppingCart") {
       navigate("/e-commerce");
     } else {
       navigate("/e-commerce/shoppingCart");
@@ -196,7 +196,7 @@ const Navbar = ({ products, setSearchResults }) => {
 
       {isMenuOpen && (
         <div className="lg:hidden md:hidden w-full bg-white z-50 border-b border-gray-200">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center px-8">
             <form action="#" className=" w-full h-[35px] relative px-4">
               <input
                 type="text"
