@@ -23,11 +23,7 @@ const Navbar = ({ products, setSearchResults }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   const handleCartClick = () => {
-    if (window.location.pathname === "/e-commerce/shoppingCart") {
-      navigate("/e-commerce");
-    } else {
-      navigate("/e-commerce/shoppingCart");
-    }
+    navigate("/e-commerce/shoppingCart");
   };
   const cartTotalQuantity = useSelector(
     (state) => state.cart.cartTotalQuantity
@@ -71,8 +67,8 @@ const Navbar = ({ products, setSearchResults }) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center bg-[#ffffff]">
-      <div className="navbar_top w-full flex items-center h-[45px] justify-center bg-[#ffffff]">
+    <div className="w-full flex flex-col items-center justify-center h- bg-[#ffffff]">
+      <div className="navbar_top w-full flex items-center justify-center bg-[#ffffff]">
         <div className="container flex justify-between items-center">
           <p className="text-sm flex items-center gap-1 font-inter font-normal text-gray-500 capitalize">
             <Check />
@@ -94,7 +90,7 @@ const Navbar = ({ products, setSearchResults }) => {
           </div>
         </div>
       </div>
-      <div className="navbar-middle w-full flex items-center justify-center bg-white h-[45px] border-t border-gray-200">
+      <div className="navbar-middle w-full flex items-center justify-center bg-white border-t border-gray-200">
         <div className="container px-4 gap-2 flex justify-between items-center md:justify-between lg:justify-between">
           <Link to="/e-commerce">
             <h1 className="text-4xl font-extrabold text-gray-500 mb-2">BE-U</h1>
@@ -130,7 +126,7 @@ const Navbar = ({ products, setSearchResults }) => {
               </button>
               {/* Resultados de búsqueda en dropdown */}
               {showResults && searchText.trim().length > 0 && (
-                <div className="absolute left-0 top-[40px] w-full bg-white border border-gray-200 rounded shadow-lg z-50 max-h-64 overflow-y-auto">
+                <div className="absolute left-0 top-[40px] w-full bg-white border border-gray-200 rounded shadow-lg z-50 overflow-y-auto">
                   {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
                       <button
