@@ -4,16 +4,19 @@ import { products } from "../data/products";
 import { useState } from "react";
 import Filter from "../filter/Filter";
 import ProductList from "../productList/ProductList";
+import Error from "../../pages/error/Error";
 const Category = ({ handleAddToCart }) => {
   const { t } = useTranslation();
   const { category } = useParams();
   const items = products.filter(
-    (product) => product.category.toLowerCase() === category?.toLowerCase()
+    (product) => product.category.toLowerCase() === category?.toLowerCase(),
   );
   const [filteredProducts, setFilteredProducts] = useState(items);
   const [hasFiltered, setHasFiltered] = useState(false); // 👈 nuevo
   const noResults = hasFiltered && filteredProducts.length === 0;
-
+  if (items.length === 0) {
+    return <Error />;
+  }
   return (
     <div className="w-full min-h-[86vh] bg-[#ffff] p-4">
       <div className="container px-4">

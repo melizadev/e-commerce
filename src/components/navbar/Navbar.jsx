@@ -26,13 +26,13 @@ const Navbar = ({ products, setSearchResults }) => {
     navigate("/e-commerce/shoppingCart");
   };
   const cartTotalQuantity = useSelector(
-    (state) => state.cart.cartTotalQuantity
+    (state) => state.cart.cartTotalQuantity,
   );
 
   const filteredProducts =
     searchText.trim().length > 0
       ? products?.filter((product) =>
-          product.title.toLowerCase().includes(searchText.toLowerCase())
+          product.title.toLowerCase().includes(searchText.toLowerCase()),
         )
       : [];
   const handleSearch = (e) => {
@@ -40,7 +40,7 @@ const Navbar = ({ products, setSearchResults }) => {
     let results = [];
     if (searchText.trim().length > 0) {
       results = products?.filter((product) =>
-        product.title.toLowerCase().includes(searchText.toLowerCase())
+        product.title.toLowerCase().includes(searchText.toLowerCase()),
       );
       setSearchResults(results);
     } else {
@@ -56,7 +56,7 @@ const Navbar = ({ products, setSearchResults }) => {
     let results = [];
     if (e.target.value.trim().length > 0) {
       results = products?.filter((product) =>
-        product.title.toLowerCase().includes(e.target.value.toLowerCase())
+        product.title.toLowerCase().includes(e.target.value.toLowerCase()),
       );
       setSearchResults(results);
       navigate(`/e-commerce/ShowResults/${e.target.value.trim()}`);
@@ -67,9 +67,9 @@ const Navbar = ({ products, setSearchResults }) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center h- bg-[#ffffff]">
+    <div className="w-full flex flex-col items-center justify-center  bg-[#ffffff]">
       <div className="navbar_top w-full flex items-center justify-center bg-[#ffffff]">
-        <div className="container flex justify-between items-center">
+        <div className="container flex justify-between items-center p-4">
           <p className="text-sm flex items-center gap-1 font-inter font-normal text-gray-500 capitalize">
             <Check />
             {t("header.shipping")}
