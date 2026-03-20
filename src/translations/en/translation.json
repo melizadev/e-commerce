@@ -26,6 +26,8 @@
     "spanish": "Spanish",
     "account": "Account",
     "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
     "search": "Search here..."
   },
   "cart": {

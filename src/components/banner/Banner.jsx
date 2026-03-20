@@ -3,8 +3,8 @@ import baner from "../../assets/baner.jpg";
 const Banner = () => {
   const { t } = useTranslation();
   return (
-    <div className="container flex flex-col lg:flex-row items-center justify-between mt-4 mb-2">
-      <div className="flex flex-row md:flex-row lg:flex-col px-2 sm:flex-row justify-center lg:items-start items-center w-full lg:w-1/2 mb-4">
+    <div className="container flex flex-col lg:flex-row items-center justify-between mb-2">
+      <div className="flex flex-row md:flex-row lg:flex-col px-4 sm:flex-row justify-center lg:items-start items-center w-full lg:w-1/2 mb-4">
         <div className="sm:h-[200px] lg:h-auto md:h-[200px] flex flex-col justify-center w-full">
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold text-[#4a5565] mb-2">
             {t("homepage.title1")} <br /> {t("homepage.title2")}

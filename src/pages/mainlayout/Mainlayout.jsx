@@ -1,6 +1,5 @@
 import { ShoppingBag } from "lucide-react";
 import Home from "../../pages/home/Home";
-import Auth from "../../auth/auth";
 import Login from "../../auth/login/Login";
 import Register from "../../register/Register";
 import Error from "../../pages/error/Error";
@@ -17,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import ShowResults from "../../components/navbar/ShowResults";
 import { products } from "../../components/data/products";
 import { useState } from "react";
+import { UserContextProvider } from "../../context/UserContext";
 const Mainlayout = () => {
   const { t } = useTranslation();
   const [searchResults, setSearchResults] = useState([]); // Nuevo estado para guardar resultados
@@ -36,7 +36,7 @@ const Mainlayout = () => {
               <ShoppingBag color="gray" />
             </Link>
           </div>
-        </div>
+        </div>,
       );
     } catch (error) {
       console.error(error);
@@ -46,38 +46,38 @@ const Mainlayout = () => {
 
   return (
     <>
-      <Navbar
-        products={products}
-        setSearchResults={setSearchResults}
-        searchResults={searchResults}
-      />
-      <Routes>
-        <Route
-          path="/e-commerce"
-          element={
-            <AuthCheck>
-              <Home products={products} handleAddToCart={handleAddToCart} />
-            </AuthCheck>
-          }
+      <UserContextProvider>
+        <Navbar
+          products={products}
+          setSearchResults={setSearchResults}
+          searchResults={searchResults}
         />
-        <Route path="/e-commerce/shoppingCart" element={<ShoppingCar />} />
-        <Route
-          path="/e-commerce/ShowResults/:search"
-          element={<ShowResults searchResults={searchResults} />}
-        />
-        <Route
-          path="/e-commerce/:category"
-          element={
-            <Category products={products} handleAddToCart={handleAddToCart} />
-          }
-        />
-        <Route path="auth" element={<Auth />}>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-        </Route>
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Footer />
+        <Routes>
+          <Route
+            path="/e-commerce"
+            element={
+              <AuthCheck>
+                <Home products={products} handleAddToCart={handleAddToCart} />
+              </AuthCheck>
+            }
+          />
+          <Route path="/e-commerce/shoppingCart" element={<ShoppingCar />} />{" "}
+          <Route path="/e-commerce/login" element={<Login />} />
+          <Route path="/e-commerce/register" element={<Register />} />
+          <Route
+            path="/e-commerce/ShowResults/:search"
+            element={<ShowResults searchResults={searchResults} />}
+          />
+          <Route
+            path="/e-commerce/:category"
+            element={
+              <Category products={products} handleAddToCart={handleAddToCart} />
+            }
+          />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Footer />
+      </UserContextProvider>
     </>
   );
 };

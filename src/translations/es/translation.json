@@ -24,9 +24,9 @@
     "shipping": "Envío gratuito para todos los pedidos por encima de $50",
     "english": "Inglés",
     "spanish": "Español",
-    "account": "Cuenta",
-    "logout": "Salir",
-    "search": "Busque aquí..."
+    "logout": "Cerrar sesión",
+    "login": "Iniciar sesión",
+    "register": "Registrar"
   },
   "cart": {
     "title": "Carro de compras",
