@@ -1,16 +1,19 @@
 import { useSelector } from "react-redux";
 import { Heart, ShoppingBag, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
-const NavActions = ({ handleCartClick, menuUserOpen, setMenuUserOpen }) => {
+import { useUser } from "../../context/UserContext";
+const NavActions = ({ handleCartClick }) => {
+  const { userInfo } = useUser();
   const cartTotalQuantity = useSelector(
     (state) => state.cart.cartTotalQuantity,
   );
 
   return (
-    <div className="hidden navbar_middle_right w-auto lg:flex md:flex items-center gap-1">
+    <div className=" navbar_middle_right w-auto lg:flex md:flex sm:hidden hidden items-center gap-2">
       {/*shopping cart */}
       <button
-        className="capitalize w-[70px] cursor-pointer p-2 flex bg-transparent border-none shadow-none"
+        className="capitalize cursor-pointer p-2 flex bg-transparent border-none shadow-none"
         onClick={handleCartClick}
       >
         <ShoppingBag color="#574c41" />
@@ -18,16 +21,17 @@ const NavActions = ({ handleCartClick, menuUserOpen, setMenuUserOpen }) => {
           {cartTotalQuantity}
         </div>
       </button>
-      {/*wishlist */}
-      <button className="btn capitalize  bg-transparent border-none shadow-none">
-        <Heart color="#574c41" />
-      </button>
-      {/*user menu with dropdown */}
+
+      {userInfo?.isAdmin && (
+        <Link
+          to="/e-commerce/admin/products"
+          className="text-gray-700 hover:text-pink-600"
+        >
+          Admin
+        </Link>
+      )}
       <div>
-        <button onClick={() => setMenuUserOpen(!menuUserOpen)} className="p-2">
-          <User color="#574c41" />
-        </button>
-        {menuUserOpen && <UserMenu setMenuUserOpen={setMenuUserOpen} />}
+        <UserMenu />
       </div>
     </div>
   );

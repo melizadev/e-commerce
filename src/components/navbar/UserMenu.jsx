@@ -4,7 +4,7 @@ import { useUser } from "../../context/UserContext";
 import { logoutService } from "../../auth/authServices";
 import toast from "react-hot-toast";
 
-const UserMenu = ({ setMenuUserOpen }) => {
+const UserMenu = () => {
   const { userInfo, setUserInfo } = useUser();
   const { t } = useTranslation();
   const handleLogout = async () => {
@@ -17,20 +17,19 @@ const UserMenu = ({ setMenuUserOpen }) => {
     }
   };
   return (
-    <div className="absolute right-4 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50">
+    <div className="flex gap-2">
       {userInfo?.username ? (
         <>
           {/* USER AUTHENTICATED */}
           <Link
             to="/e-commerce/profile"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
-            onClick={() => setMenuUserOpen(false)}
+            className="block px-2 py-2  text-gray-700 hover:bg-gray-100 transition"
           >
             Profile
           </Link>
 
           <button
-            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition"
+            className="w-full text-left px-2 py-2  text-red-600  hover:bg-pink-100 border  border-pink-500 rounded transition"
             onClick={handleLogout}
           >
             {t("header.logout")}
@@ -41,16 +40,14 @@ const UserMenu = ({ setMenuUserOpen }) => {
           {/* USER NOT AUTHENTICATED */}
           <Link
             to="/e-commerce/login"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
-            onClick={() => setMenuUserOpen(false)}
+            className="block px-4 py-2  text-gray-700 hover:text-pink-600 hover:bg-gray-100 transition"
           >
             {t("header.login")}
           </Link>
 
           <Link
             to="/e-commerce/register"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
-            onClick={() => setMenuUserOpen(false)}
+            className="block px-4 py-2 text-gray-700 hover:bg-pink-100 transition border  border-pink-500 rounded"
           >
             {t("header.register")}
           </Link>

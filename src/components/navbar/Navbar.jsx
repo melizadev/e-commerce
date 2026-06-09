@@ -2,7 +2,8 @@ import { useState } from "react";
 import TopBar from "./TopBar";
 import NavbarMiddle from "./NavbarMiddle";
 import MenuMobile from "./MenuMobile";
-const Navbar = ({ products, setSearchResults }) => {
+import { products } from "../../data/products";
+const Navbar = ({ setSearchResults }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -18,7 +19,7 @@ const Navbar = ({ products, setSearchResults }) => {
           setIsMenuOpen={setIsMenuOpen}
         />
       </div>
-      {isMenuOpen && <MenuMobile />}
+      {isMenuOpen && <MenuMobile setSearchResults={setSearchResults} />}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Filter from "../filter/Filter";
-import ProductList from "../productList/ProductList";
-import { products } from "../data/products";
-const AllArticles = ({ handleAddToCart }) => {
+import ProductList from "../../pages/productList/ProductList";
+import { products } from "../../data/products";
+const AllArticles = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [hasFiltered, setHasFiltered] = useState(false);
   const noResults = hasFiltered && filteredProducts.length === 0;
@@ -29,10 +29,7 @@ const AllArticles = ({ handleAddToCart }) => {
             </p>
           </div>
         ) : (
-          <ProductList
-            filteredProducts={filteredProducts}
-            handleAddToCart={handleAddToCart}
-          />
+          <ProductList filteredProducts={filteredProducts} />
         )}
       </div>
     </div>

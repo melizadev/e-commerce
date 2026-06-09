@@ -1,83 +1,63 @@
 import { ShoppingBag } from "lucide-react";
 import Home from "../../pages/home/Home";
 import Login from "../../auth/login/Login";
-import Register from "../../register/Register";
+import Register from "../../pages/register/Register";
 import Error from "../../pages/error/Error";
-import AuthCheck from "../authcheck/AuthCheck";
 import { Route, Routes, Link } from "react-router";
+import { Navigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
-import Category from "../../components/category/Category";
+import Category from "../category/Category";
 import Footer from "../../components/footer/Footer";
-import ShoppingCar from "../../components/shoppingCart/ShoppingCar";
-import { useDispatch } from "react-redux";
-import { addToCart, calculateTotalQuantity } from "../../features/cartSlice";
-import { toast } from "react-hot-toast";
-import { useTranslation } from "react-i18next";
+import ShoppingCar from "../shoppingCart/ShoppingCar";
 import ShowResults from "../../components/navbar/ShowResults";
-import { products } from "../../components/data/products";
 import { useState } from "react";
-import { UserContextProvider } from "../../context/UserContext";
+import { useUser } from "../../context/UserContext";
+import Profile from "../../pages/profile/Profile";
+import ProductAdminList from "../products-admin/ProductAdminList";
+import Layout from "../../layout/Layout";
+import ProtectedRoutes from "../../components/protectedroutes/ProtectedRoutes";
 const Mainlayout = () => {
-  const { t } = useTranslation();
+  const { userInfo } = useUser();
   const [searchResults, setSearchResults] = useState([]); // Nuevo estado para guardar resultados
-  const dispatch = useDispatch();
-  const handleAddToCart = (product) => {
-    try {
-      dispatch(addToCart(product));
-      dispatch(calculateTotalQuantity(product));
-      toast.success(
-        <div className="relative p-2">
-          {t("cart.action_add1")} {product?.title} {t("cart.action_add2")}
-          <div title={t("cart.title")}>
-            <Link
-              to="/e-commerce/shoppingCart"
-              className="absolute right-[8px] top-[50%] pt-1"
-            >
-              <ShoppingBag color="gray" />
-            </Link>
-          </div>
-        </div>,
-      );
-    } catch (error) {
-      console.error(error);
-      toast.error("Oops, there seems to be an error");
-    }
-  };
 
   return (
     <>
-      <UserContextProvider>
-        <Navbar
-          products={products}
-          setSearchResults={setSearchResults}
-          searchResults={searchResults}
-        />
-        <Routes>
+      <Routes>
+        <Route
+          element={
+            <Layout
+              setSearchResults={setSearchResults}
+              searchResults={searchResults}
+            />
+          }
+        >
+          <Route path="/e-commerce" element={<Home />} />
           <Route
-            path="/e-commerce"
-            element={
-              <AuthCheck>
-                <Home products={products} handleAddToCart={handleAddToCart} />
-              </AuthCheck>
-            }
-          />
-          <Route path="/e-commerce/shoppingCart" element={<ShoppingCar />} />{" "}
+            path="/e-commerce/shoppingCart"
+            element={<ShoppingCar />}
+          />{" "}
           <Route path="/e-commerce/login" element={<Login />} />
+          {userInfo?.email && (
+            <Route path="/e-commerce/profile" element={<Profile />} />
+          )}
           <Route path="/e-commerce/register" element={<Register />} />
           <Route
             path="/e-commerce/ShowResults/:search"
             element={<ShowResults searchResults={searchResults} />}
           />
+          <Route path="/e-commerce/:category" element={<Category />} />
+          <Route path="*" element={<Error />} />
           <Route
-            path="/e-commerce/:category"
+            path="/e-commerce/admin/products"
             element={
-              <Category products={products} handleAddToCart={handleAddToCart} />
+              <ProtectedRoutes>
+                <ProductAdminList />
+              </ProtectedRoutes>
             }
           />
-          <Route path="*" element={<Error />} />
-        </Routes>
-        <Footer />
-      </UserContextProvider>
+        </Route>
+      </Routes>
+      <Footer />
     </>
   );
 };

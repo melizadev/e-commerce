@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-
-const ProductList = ({ filteredProducts, handleAddToCart }) => {
+import useCartActions from "../../hooks/useCartActions";
+const ProductList = ({ filteredProducts }) => {
   const { t } = useTranslation();
-
+  const { handleAddToCart } = useCartActions();
   return (
     <ul
       className="w-full mt-2 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5"

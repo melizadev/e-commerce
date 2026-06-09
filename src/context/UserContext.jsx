@@ -11,6 +11,7 @@ export const UserContextProvider = ({ children }) => {
     try {
       const userData = await getProfileService();
       setUserInfo(userData);
+      console.log("User session checked:", userData);
     } catch (error) {
       console.log(error);
       setUserInfo({});

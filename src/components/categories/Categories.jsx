@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { images } from "../data/products";
+import { images } from "../../data/products";
 const Categories = () => {
   const { t } = useTranslation();
 

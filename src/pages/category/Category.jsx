@@ -1,24 +1,24 @@
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import { products } from "../data/products";
+import { products } from "../../data/products";
 import { useState } from "react";
-import Filter from "../filter/Filter";
+import Filter from "../../components/filter/Filter";
 import ProductList from "../productList/ProductList";
-import Error from "../../pages/error/Error";
-const Category = ({ handleAddToCart }) => {
+import Error from "../error/Error";
+const Category = () => {
   const { t } = useTranslation();
   const { category } = useParams();
   const items = products.filter(
     (product) => product.category.toLowerCase() === category?.toLowerCase(),
   );
   const [filteredProducts, setFilteredProducts] = useState(items);
-  const [hasFiltered, setHasFiltered] = useState(false); // 👈 nuevo
+  const [hasFiltered, setHasFiltered] = useState(false);
   const noResults = hasFiltered && filteredProducts.length === 0;
   if (items.length === 0) {
     return <Error />;
   }
   return (
-    <div className="w-full min-h-[86vh] bg-[#ffff] p-4">
+    <div className="w-full min-h-[86vh] bg-[#ffff] p-4 flex items-center justify-center">
       <div className="container px-4">
         <h1 className="text-[40px] text-[#6b6b6b] pb-3 capitalize">
           {t(`categories.${category}`) || category}
@@ -35,10 +35,7 @@ const Category = ({ handleAddToCart }) => {
             </p>
           </div>
         ) : (
-          <ProductList
-            filteredProducts={filteredProducts}
-            handleAddToCart={handleAddToCart}
-          />
+          <ProductList filteredProducts={filteredProducts} />
         )}
       </div>
     </div>

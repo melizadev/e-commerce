@@ -19,7 +19,7 @@ const NavbarMiddle = ({
     navigate("/e-commerce/shoppingCart");
   };
   return (
-    <div className="container px-4 gap-2 flex justify-between items-center md:justify-between lg:justify-between">
+    <div className="container px-4 gap-2 py-2 flex justify-between items-center md:justify-between lg:justify-between">
       {/* //logo and menu icon for mobile */}
       <Link to="/e-commerce">
         <h1 className="text-4xl font-extrabold text-gray-500 mb-2">BE-U</h1>
@@ -32,7 +32,10 @@ const NavbarMiddle = ({
         <Menu color="#4a5565" />
       </button>
       {/* // search products in search bar */}
-      <SearchBar products={products} setSearchResults={setSearchResults} />
+      <div className="hidden lg:flex md:flex items-center search_box justify-center">
+        {" "}
+        <SearchBar products={products} setSearchResults={setSearchResults} />
+      </div>
       {/* navbar middle right  */}
       <NavActions
         handleCartClick={handleCartClick}

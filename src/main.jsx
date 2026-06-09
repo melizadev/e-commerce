@@ -7,13 +7,15 @@ import { store } from "./store.js";
 import "./translations/i18n.js";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router";
+import { UserContextProvider } from "./context/UserContext.jsx";
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <UserContextProvider>
         <Mainlayout />
-        <Toaster position="top-center" reverseOrder={false} />
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
+      </UserContextProvider>
+
+      <Toaster position="top-center" reverseOrder={false} />
+    </BrowserRouter>
+  </Provider>,
 );

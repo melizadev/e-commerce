@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
 @import "tailwindcss";
 @plugin "daisyui";
 @theme {
-    --font-inter: "Inter", sans-serif;    
-    --font-shadows: "Shadows Into Light";
-
+  --font-inter: "Inter", sans-serif;
+  --font-shadows: "Shadows Into Light";
 }
 
-  .slick-prev:before,
-    .slick-next:before {
-      color: rgb(82, 82, 82) !important; /* Cambia el color a azul */
-      size: 30px; 
-    }
-   
-     .slick-prev{
-      display: absolute;
-      left: 30px; /* Ajusta la posición derecha */
-    }
+.slick-prev:before,
+.slick-next:before {
+  color: rgb(82, 82, 82) !important; /* Cambia el color a azul */
+  size: 30px;
+}
+
+.slick-prev {
+  display: absolute;
+  left: 30px; /* Ajusta la posición derecha */
+}
