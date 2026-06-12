@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import { products } from "../../data/products";
+import useProducts from "../../hooks/useProducts";
 import { useState } from "react";
 import Filter from "../../components/filter/Filter";
 import ProductList from "../productList/ProductList";
 import Error from "../error/Error";
 const Category = () => {
+  const { products } = useProducts();
   const { t } = useTranslation();
   const { category } = useParams();
   const items = products.filter(

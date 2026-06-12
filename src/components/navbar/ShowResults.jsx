@@ -27,7 +27,7 @@ const ShowResults = ({ searchResults }) => {
           {searchResults.map((product) => (
             <div key={product.id}>
               <img
-                src={product.image}
+                src={product.imageUrl}
                 alt={product.title}
                 className="w-[200px] h-[250px] cursor-pointer object-cover"
               />

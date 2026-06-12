@@ -9,10 +9,10 @@ const ProductList = ({ filteredProducts }) => {
       role="list"
     >
       {filteredProducts?.map((product) => (
-        <li key={product.id} role="listitem">
+        <li key={product._id} role="listitem">
           <article className="w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
             <img
-              src={product.image}
+              src={product.imageUrl}
               alt={product.title}
               className="lg:h-[300px] md:h-[250px] h-[290px] cursor-pointer w-full object-cover rounded-t-lg"
             />

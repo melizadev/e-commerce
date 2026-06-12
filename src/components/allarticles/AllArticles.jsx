@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Filter from "../filter/Filter";
 import ProductList from "../../pages/productList/ProductList";
-import { products } from "../../data/products";
+import useProducts from "../../hooks/useProducts";
 const AllArticles = () => {
+  const { products } = useProducts();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [hasFiltered, setHasFiltered] = useState(false);
   const noResults = hasFiltered && filteredProducts.length === 0;
@@ -29,7 +30,9 @@ const AllArticles = () => {
             </p>
           </div>
         ) : (
-          <ProductList filteredProducts={filteredProducts} />
+          <ProductList
+            filteredProducts={hasFiltered ? filteredProducts : products}
+          />
         )}
       </div>
     </div>

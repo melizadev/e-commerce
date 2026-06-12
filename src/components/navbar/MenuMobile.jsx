@@ -2,8 +2,9 @@ import { useTranslation } from "react-i18next";
 import { Search } from "lucide-react";
 import { Link } from "react-router";
 import SearchBar from "./SearchBar";
-import { products } from "../../data/products";
+import useProducts from "../../hooks/useProducts";
 const MenuMobile = ({ setSearchResults }) => {
+  const { products } = useProducts;
   const { t } = useTranslation();
   return (
     <div className="lg:hidden md:hidden w-full bg-white z-50 border-b border-gray-200 container">

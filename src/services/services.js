@@ -37,19 +37,24 @@ export const createProduct = async (productData) => {
       },
       body: JSON.stringify(productData),
     });
+
+    const data = await response.json();
+    console.log(data);
+
     if (!response.ok) {
-      throw new Error("Error creating product");
+      throw new Error(data.message);
     }
-    return await response.json();
+
+    return data;
   } catch (error) {
     console.error("Error creating product:", error);
     throw error;
   }
 };
 
-export const updateProduct = async (id, productData) => {
+export const updateProduct = async (productData) => {
   try {
-    const response = await fetch(`${API_URL}/products/${id}`, {
+    const response = await fetch(`${API_URL}/products/${productData._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

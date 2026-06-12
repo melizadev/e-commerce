@@ -1,15 +1,6 @@
 import { Pencil, Trash } from "lucide-react";
-import toast from "react-hot-toast";
-const ProductsTable = ({ filteredProducts, setEditProduct, deleteProduct }) => {
-  const handleDelete = (id) => {
-    const id_product = prompt("Ingresar codigo de producto a eliminar");
-    if (id_product === id) {
-      deleteProduct();
-      toast.success("Producto eliminado correctamente");
-    } else {
-      toast.error("Id incorrecto");
-    }
-  };
+
+const ProductsTable = ({ filteredProducts, setEditProduct, setIdProduct }) => {
   return (
     <table className="container">
       <thead>
@@ -27,17 +18,19 @@ const ProductsTable = ({ filteredProducts, setEditProduct, deleteProduct }) => {
       <tbody className="bg-white divide-y divide-gray-200 text-gray-700">
         {filteredProducts.map((product) => (
           <tr
-            key={product.id}
+            key={product._id}
             className="border-b border-gray-300 hover:bg-gray-50"
           >
-            <td className="px-6 py-4">{String(product.id).padStart(3, "0")}</td>
+            <td className="px-6 py-4">
+              {String(product._id).padStart(3, "0")}
+            </td>
             <td className="px-6 py-4">{product.title}</td>
             <td className="px-6 py-4">{product.category}</td>
             <td className="px-6 py-4">{product.stock}</td>
             <td className="px-6 py-4">${product.price.toFixed(2)}</td>
             <td className="px-6 py-4">
               <img
-                src={product.image}
+                src={product.imageUrl}
                 alt={product.title}
                 className="w-16 h-16 object-cover"
               />
@@ -48,13 +41,13 @@ const ProductsTable = ({ filteredProducts, setEditProduct, deleteProduct }) => {
                   onClick={() => setEditProduct(product)}
                   className="text-gray-400 hover:text-gray-600 cursor-pointer"
                 >
-                  <Pencil size={20} />
+                  Edit
                 </button>
                 <button
-                  onClick={() => handleDelete(product.id)}
+                  onClick={() => setIdProduct(product._id)}
                   className="text-red-500 hover:text-red-600 cursor-pointer"
                 >
-                  <Trash size={20} />
+                  Delete
                 </button>
               </div>
             </td>

@@ -2,9 +2,10 @@ import { useState } from "react";
 import TopBar from "./TopBar";
 import NavbarMiddle from "./NavbarMiddle";
 import MenuMobile from "./MenuMobile";
-import { products } from "../../data/products";
+import useProducts from "../../hooks/useProducts";
 const Navbar = ({ setSearchResults }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { products } = useProducts();
 
   return (
     <div className="w-full flex flex-col items-center justify-center  bg-[#ffffff]">

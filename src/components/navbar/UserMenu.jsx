@@ -23,13 +23,13 @@ const UserMenu = () => {
           {/* USER AUTHENTICATED */}
           <Link
             to="/e-commerce/profile"
-            className="block px-2 py-2  text-gray-700 hover:bg-gray-100 transition"
+            className="block px-2 py-2  text-gray-700 hover:text-pink-500 transition"
           >
             Profile
           </Link>
 
           <button
-            className="w-full text-left px-2 py-2  text-red-600  hover:bg-pink-100 border  border-pink-500 rounded transition"
+            className="w-full text-left px-2 py-2  text-red-600  border-pink-500 rounded transition"
             onClick={handleLogout}
           >
             {t("header.logout")}
@@ -40,14 +40,14 @@ const UserMenu = () => {
           {/* USER NOT AUTHENTICATED */}
           <Link
             to="/e-commerce/login"
-            className="block px-4 py-2  text-gray-700 hover:text-pink-600 hover:bg-gray-100 transition"
+            className="block px-4 py-2  text-gray-700 hover:text-pink-600 transition"
           >
             {t("header.login")}
           </Link>
 
           <Link
             to="/e-commerce/register"
-            className="block px-4 py-2 text-gray-700 hover:bg-pink-100 transition border  border-pink-500 rounded"
+            className="block px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white transition   border  border-pink-500 rounded"
           >
             {t("header.register")}
           </Link>

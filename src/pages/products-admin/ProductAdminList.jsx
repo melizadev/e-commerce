@@ -1,32 +1,63 @@
-import { products } from "../../data/products";
 import ProductActions from "./ProductActions";
+import useProducts from "../../hooks/useProducts";
+import usePagination from "../../hooks/usePagination";
+import useProductSearch from "../../hooks/useProductSearch";
+import useProductModals from "../../hooks/useProductModals";
+import ProductsListSection from "./ProductsListSection";
 import { useState } from "react";
-import { Pencil, Trash } from "lucide-react";
-import ProductForm from "./ProductForm";
-import ProductsTable from "./products-table/ProductsTable";
-import Pagination from "./pagination/Pagination";
-import { deleteProduct } from "../../services/services";
+import ProductModals from "./ProductModals";
+import toast from "react-hot-toast";
 const ProductAdminList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [editProduct, setEditProduct] = useState(null);
-  const [newProduct, setNewProduct] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const filteredProducts = products.filter((product) => {
-    const term = searchTerm.toLowerCase();
-    if (term) {
-      return (
-        product.title.toLowerCase().includes(term) ||
-        product.id.toString().includes(searchTerm) ||
-        product.category.toLowerCase().includes(term)
-      );
+  const {
+    editProduct,
+    setEditProduct,
+    newProduct,
+    setNewProduct,
+    idProduct,
+    setIdProduct,
+  } = useProductModals();
+
+  const { products, handleCreateProduct, handleDelete, handleUpdateProduct } =
+    useProducts();
+
+  const filteredProducts = useProductSearch(products, searchTerm);
+
+  const { totalPages, currentPage, setCurrentPage, paginatedProducts } =
+    usePagination(filteredProducts);
+
+  const handleCreate = async (productData) => {
+    try {
+      await handleCreateProduct(productData);
+      toast.success("Producto creado correctamente");
+      setNewProduct(null);
+    } catch (error) {
+      toast.error("No se pudo crear el producto");
+      console.error(error);
     }
-    return true;
-  });
-  const PRODUCTS_PER_PAGE = 6;
-  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
-  const endIndex = startIndex + PRODUCTS_PER_PAGE;
-  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+  };
+
+  const handleUpdate = async (productData) => {
+    try {
+      await handleUpdateProduct(productData);
+      toast.success("Producto actualizado correctamente");
+      setEditProduct(null);
+    } catch (error) {
+      toast.error("No se pudo actualizar el producto");
+      console.error(error);
+    }
+  };
+
+  const handleDeleteConfirm = async () => {
+    try {
+      await handleDelete(idProduct);
+      toast.success("Producto eliminado correctamente");
+      setIdProduct(null);
+    } catch (error) {
+      toast.error("No se pudo eliminar el producto");
+      console.error(error);
+    }
+  };
 
   return (
     <section className="bg-gray-100 flex flex-col relative">
@@ -38,39 +69,29 @@ const ProductAdminList = () => {
       <div className="container mx-auto py-8">
         {/* Table */}
         <div className="overflow-x-auto">
-          <ProductsTable
-            filteredProducts={paginatedProducts}
-            setEditProduct={setEditProduct}
-            deleteProduct={deleteProduct}
-          />
-          <Pagination
-            currentPage={currentPage}
+          <ProductsListSection
             totalPages={totalPages}
-            onPageChange={setCurrentPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            paginatedProducts={paginatedProducts}
+            setEditProduct={setEditProduct}
+            setIdProduct={setIdProduct}
           />
-          {/* Edit Product Modal */}
-          {editProduct && (
-            <ProductForm
-              value={editProduct}
-              onSubmit={(data) => console.log(data)}
-              onClose={setEditProduct}
-              mode={"edit"}
-            />
-          )}
-          {newProduct && (
-            <ProductForm
-              value={{
-                title: "",
-                category: "",
-                stock: 0,
-                price: 0,
-                imageUrl: "",
-              }}
-              onSubmit={(data) => console.log(data)}
-              onClose={setNewProduct}
-              mode={"create"}
-            />
-          )}
+          {/* Modals */}
+          <ProductModals
+            setEditProduct={setEditProduct}
+            setIdProduct={setIdProduct}
+            editProduct={editProduct}
+            newProduct={newProduct}
+            idProduct={idProduct}
+            onCreate={handleCreate}
+            onUpdate={handleUpdate}
+            onDelete={handleDeleteConfirm}
+            setNewProduct={setNewProduct}
+            closeEdit={() => setEditProduct(null)}
+            closeCreate={() => setNewProduct(null)}
+            closeDelete={() => setIdProduct(null)}
+          />
         </div>
       </div>
     </section>

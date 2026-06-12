@@ -19,7 +19,7 @@ const ProductForm = ({ value, onSubmit, mode, onClose }) => {
     console.log("value", value);
   }, [value]);
   return (
-    <div className="border border-blue-300 shadow-xl mt-4 text-gray-700 bg-white p-4 rounded w-full md:w-1/2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="border border-blue-300 shadow-xl mt-4 text-gray-700 bg-white p-4 rounded w-130 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <h3 className="text-lg font-bold mb-4">
         {mode === "edit" ? "Editar Producto" : "Crear Producto"}
       </h3>
@@ -75,7 +75,7 @@ const ProductForm = ({ value, onSubmit, mode, onClose }) => {
         <div className="flex justify-end gap-2">
           <button
             type="button"
-            onClick={() => onClose(null)}
+            onClick={() => onClose()}
             className="bg-gray-300 px-4 py-2 rounded"
           >
             Cancelar
