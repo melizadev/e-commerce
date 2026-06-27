@@ -16,7 +16,7 @@ const useLogout = () => {
       dispatch(clearCartState());
       setUserInfo({});
       toast.success(t("Logout successful"));
-      navigate("/e-commerce");
+      navigate("/");
     } catch (error) {
       toast.error(t(error.message || "header.logoutFailed"));
     }

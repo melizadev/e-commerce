@@ -44,7 +44,7 @@ const Categories = () => {
               key={d.id}
               className="bg-white max-w-[300px] h-[400px] text-black rounded-xl w-full flex flex-col items-center justify-center"
             >
-              <Link to={`/e-commerce/${d?.category}`}>
+              <Link to={`/${d?.category}`}>
                 <div className="h-full w-full flex justify-center items-center rounded-t-xl relative">
                   <img
                     src={d?.src}

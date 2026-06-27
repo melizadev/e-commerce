@@ -48,7 +48,7 @@ const Register = () => {
     }
   };
   if (redirect && !userInfo.isAdmin) {
-    return <Navigate to="/e-commerce" />;
+    return <Navigate to="/" />;
   }
 
   return (

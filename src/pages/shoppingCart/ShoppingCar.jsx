@@ -55,7 +55,7 @@ const ShoppingCar = () => {
           <div>
             {userInfo?.email && (
               <Link
-                to="/e-commerce/orders"
+                to="/orders"
                 className="text-gray-700 p-2 rounded-md border-gray-400 border hover:shadow-sm duration-200 "
               >
                 See my orders

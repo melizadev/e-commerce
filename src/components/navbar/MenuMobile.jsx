@@ -10,22 +10,16 @@ const MenuMobile = ({ setSearchResults }) => {
     <div className="lg:hidden md:hidden w-full bg-white z-50 border-b border-gray-200 container">
       <div className="flex flex-col items-center px-4 ">
         <SearchBar products={products} setSearchResults={setSearchResults} />
-        <Link
-          to="/e-commerce"
-          className="py-2 text-1xl font-bold  text-gray-600"
-        >
+        <Link to="/" className="py-2 text-1xl font-bold  text-gray-600">
           {t("menu.home")}
         </Link>
         <Link
-          to="/e-commerce/shoppingCart"
+          to="/shoppingCart"
           className="py-2 text-1xl font-bold text-gray-600"
         >
           {t("cart.title")}
         </Link>
-        <Link
-          to="/e-commerce/profile"
-          className="py-2 text-1xl font-bold  text-gray-600"
-        >
+        <Link to="/profile" className="py-2 text-1xl font-bold  text-gray-600">
           {t("menu.profile")}
         </Link>
       </div>

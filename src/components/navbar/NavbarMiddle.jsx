@@ -16,12 +16,12 @@ const NavbarMiddle = ({
     setIsMenuOpen(!isMenuOpen);
   };
   const handleCartClick = () => {
-    navigate("/e-commerce/shoppingCart");
+    navigate("/shoppingCart");
   };
   return (
     <div className="container px-4 gap-2 py-2 flex justify-between items-center md:justify-between lg:justify-between">
       {/* //logo and menu icon for mobile */}
-      <Link to="/e-commerce">
+      <Link to="/">
         <h1 className="text-4xl font-extrabold text-gray-500 mb-2">BE-U</h1>
       </Link>
       {/* menu icon for mobile */}

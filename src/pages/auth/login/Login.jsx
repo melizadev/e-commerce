@@ -35,7 +35,7 @@ const Login = () => {
     }
   };
   if (redirect && userInfo?.isAdmin) {
-    return <Navigate to="/e-commerce" />;
+    return <Navigate to="/" />;
   }
 
   return (
@@ -129,7 +129,7 @@ const Login = () => {
         <p className="text-sm text-center text-gray-500">
           Don't have an account?{" "}
           <a
-            href="/e-commerce/register"
+            href="/register"
             className="text-blue-500 hover:text-blue-600 font-medium"
           >
             Register

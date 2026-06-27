@@ -22,10 +22,10 @@ const AppRouter = () => {
       <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/e-commerce" element={<HomePage />} />
-          <Route path="/e-commerce/shoppingCart" element={<ShoppingCar />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/shoppingCart" element={<ShoppingCar />} />
           <Route
-            path="/e-commerce/admin/products"
+            path="/admin/products"
             element={
               <ProtectedRoutes>
                 <AdminLayout />
@@ -33,16 +33,16 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/e-commerce/payment/:orderId"
+            path="/payment/:orderId"
             element={
               <ProtectedRoutes>
                 <PaymentSection />
               </ProtectedRoutes>
             }
           />
-          <Route path="/e-commerce/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route
-            path="/e-commerce/profile"
+            path="/profile"
             element={
               <ProtectedRoutes>
                 <Profile />
@@ -50,7 +50,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/e-commerce/:orderId/success"
+            path="/:orderId/success"
             element={
               <ProtectedRoutes>
                 <OrderSuccess />
@@ -58,7 +58,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/e-commerce/orders/"
+            path="/orders/"
             element={
               <ProtectedRoutes>
                 <Orders />
@@ -66,19 +66,16 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/e-commerce/orders/:orderId"
+            path="/orders/:orderId"
             element={
               <ProtectedRoutes>
                 <OrderDetails />
               </ProtectedRoutes>
             }
           />
-          <Route path="/e-commerce/register" element={<Register />} />
-          <Route
-            path="/e-commerce/ShowResults/:search"
-            element={<ShowResults />}
-          />
-          <Route path="/e-commerce/:category" element={<Category />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/ShowResults/:search" element={<ShowResults />} />
+          <Route path="/:category" element={<Category />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

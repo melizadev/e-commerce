@@ -28,14 +28,14 @@ const OrderSuccess = () => {
 
         <div className="flex flex-col gap-3">
           <Link
-            to="/e-commerce/orders"
+            to="s/orders"
             className="bg-black text-white py-3 rounded-lg font-medium hover:opacity-90 transition"
           >
             Ver mis pedidos
           </Link>
 
           <Link
-            to="/e-commerce"
+            to="/"
             className="border text-gray-600 border-gray-300 py-3 rounded-lg font-medium hover:bg-gray-100 transition"
           >
             Seguir comprando

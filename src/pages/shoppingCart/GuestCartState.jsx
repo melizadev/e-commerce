@@ -14,14 +14,14 @@ const GuestCartState = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            to="/e-commerce/login"
+            to="/login"
             className="bg-black text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
           >
             Iniciar sesión
           </Link>
 
           <Link
-            to="/e-commerce/register"
+            to="/register"
             className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition"
           >
             Registrarme

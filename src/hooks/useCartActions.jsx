@@ -26,11 +26,7 @@ const useCartActions = () => {
       toast.success(
         <div className="flex justify-center items-center p-2">
           {t("cart.action_add1")} {product.title} {t("cart.action_add2")}
-          <Link
-            to="/e-commerce/shoppingCart"
-            className=""
-            title={t("cart.title")}
-          >
+          <Link to="/shoppingCart" className="" title={t("cart.title")}>
             <ShoppingBag color="gray" />
           </Link>
         </div>,
@@ -64,7 +60,7 @@ const useCartActions = () => {
   const handleCheckout = async () => {
     try {
       const response = await checkoutOrder();
-      navigate(`/e-commerce/payment/${response.orderId}`);
+      navigate(`/payment/${response.orderId}`);
     } catch (error) {
       console.error("Error al crear checkout:", error);
     }

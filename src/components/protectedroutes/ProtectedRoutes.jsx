@@ -5,11 +5,11 @@ const ProtectedRoutes = ({ children }) => {
   const { userInfo } = useUser();
 
   if (Object.keys(userInfo).length === 0) {
-    return <Navigate to="/e-commerce" replace />;
+    return <Navigate to="/" replace />;
   }
 
   if (!userInfo.isAdmin) {
-    return <Navigate to="/e-commerce" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/e-commerce/(.*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]

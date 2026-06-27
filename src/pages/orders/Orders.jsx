@@ -99,7 +99,7 @@ const Orders = () => {
               </div>
 
               <Link
-                to={`/e-commerce/orders/${order._id}`}
+                to={`/orders/${order._id}`}
                 className=" text-gray-700 px-5 py-2 rounded-lg"
               >
                 Ver detalle

@@ -12,7 +12,7 @@ const UserMenu = () => {
         <>
           {/* USER AUTHENTICATED */}
           <Link
-            to="/e-commerce/profile"
+            to="/profile"
             className="
           px-4 py-2 
           rounded-full
@@ -47,7 +47,7 @@ const UserMenu = () => {
         <>
           {/* USER NOT AUTHENTICATED */}
           <Link
-            to="/e-commerce/login"
+            to="/login"
             className="
           px-4 py-2
           rounded-full
@@ -62,7 +62,7 @@ const UserMenu = () => {
           </Link>
 
           <Link
-            to="/e-commerce/register"
+            to="/register"
             className="
           px-5 py-2
           rounded-full

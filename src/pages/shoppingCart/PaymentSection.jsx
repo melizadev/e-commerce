@@ -19,7 +19,7 @@ const PaymentSection = () => {
     try {
       await cancelOrderService(orderId);
       toast.success("Pedido cancelado");
-      navigate("/e-commerce/orders");
+      navigate("/orders");
     } catch (error) {
       toast.error(error.message);
     }
@@ -30,7 +30,7 @@ const PaymentSection = () => {
       toast.success("Payment successful");
       dispatch(clearCartState());
       setOrder(response.order);
-      navigate(`/e-commerce/${orderId}/success`);
+      navigate(`/${orderId}/success`);
     } catch (error) {
       toast.error(error.message);
     }

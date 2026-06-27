@@ -17,22 +17,22 @@ const useSearch = (products = []) => {
     e.preventDefault();
     if (!searchText) {
       setShowResults(false);
-      navigate("/e-commerce");
+      navigate("/");
       return;
     }
     setShowResults(false);
-    navigate(`/e-commerce/showResults/${searchText}`);
+    navigate(`/showResults/${searchText}`);
   };
 
   const handleSelectProduct = (product) => {
     setShowResults(false);
-    navigate(`/e-commerce/showResults/${product.title}`);
+    navigate(`/showResults/${product.title}`);
   };
 
   const clearSearch = () => {
     setSearchText("");
     setShowResults(false);
-    navigate("/e-commerce");
+    navigate("/");
   };
   const filteredProducts = useMemo(() => {
     const text = searchText.trim().toLowerCase();

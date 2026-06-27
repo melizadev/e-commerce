@@ -17,7 +17,7 @@ const OrderDetails = () => {
 
       toast.success("Pedido cancelado");
 
-      navigate("/e-commerce/orders");
+      navigate("/orders");
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +49,7 @@ const OrderDetails = () => {
   return (
     <section className="max-w-4xl mx-auto px-4 py-10 text-gray-500">
       <Link
-        to="/e-commerce/orders"
+        to="/orders"
         className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-black mb-6"
       >
         <ArrowLeft size={18} />
@@ -133,7 +133,7 @@ const OrderDetails = () => {
           {order.payment.status === "pending" && (
             <>
               <Link
-                to={`/e-commerce/payment/${orderId}`}
+                to={`/payment/${orderId}`}
                 className="bg-black text-white px-5 py-3 rounded-lg"
               >
                 Continuar pago
