@@ -7,12 +7,16 @@ import {
 import { fetchProducts } from "../services/services";
 const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const getProducts = async () => {
     try {
+      setLoading(true);
       const response = await fetchProducts();
       setProducts(response);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -52,6 +56,7 @@ const useProducts = () => {
     handleUpdateProduct,
     handleDelete,
     products,
+    loading,
   };
 };
 

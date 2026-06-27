@@ -20,7 +20,6 @@ const TopBar = () => {
           </button>
           <button>
             <Link className="flex items-center gap-1 text-sm text-gray-500 font-inter font-normal capitalize">
-              {" "}
               <Info />
             </Link>
           </button>

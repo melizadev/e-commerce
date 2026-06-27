@@ -5,32 +5,34 @@ import UserMenu from "./UserMenu";
 import { useUser } from "../../context/UserContext";
 const NavActions = ({ handleCartClick }) => {
   const { userInfo } = useUser();
-  const cartTotalQuantity = useSelector(
-    (state) => state.cart.cartTotalQuantity,
-  );
+  const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
-    <div className=" navbar_middle_right w-auto lg:flex md:flex sm:hidden hidden items-center gap-2">
-      {/*shopping cart */}
+    <div className="w-auto lg:flex md:flex sm:hidden hidden items-center justify-center gap-4">
+      {/* Shopping Cart */}
       <button
-        className="capitalize cursor-pointer p-2 flex bg-transparent border-none shadow-none"
+        className="relative cursor-pointer p-2 rounded-full  hover:bg-pink-100 transition-all duration-300 hover:scale-105 shadow-sm"
         onClick={handleCartClick}
       >
-        <ShoppingBag color="#574c41" />
-        <div className="badge border-none text-white badge-sm bg-pink-600">
+        <ShoppingBag size={22} className="text-[#574c41]" />
+
+        <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-pink-600 rounded-full shadow-md">
           {cartTotalQuantity}
-        </div>
+        </span>
       </button>
 
+      {/* Admin */}
       {userInfo?.isAdmin && (
         <Link
           to="/e-commerce/admin/products"
-          className="text-gray-700 hover:text-pink-600"
+          className="px-2 py-2 rounded-full bg-gray-100 text-gray-700 font-medium hover:bg-pink-50 hover:text-pink-600 transition-all duration-300"
         >
           Admin
         </Link>
       )}
-      <div>
+
+      {/* User Menu */}
+      <div className="rounded-full">
         <UserMenu />
       </div>
     </div>

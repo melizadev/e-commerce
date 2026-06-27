@@ -1,6 +1,5 @@
 import { Pencil, Trash } from "lucide-react";
-
-const ProductsTable = ({ filteredProducts, setEditProduct, setIdProduct }) => {
+const ProductsTable = ({ paginatedItems, setEditProduct, setIdProduct }) => {
   return (
     <table className="container">
       <thead>
@@ -16,13 +15,13 @@ const ProductsTable = ({ filteredProducts, setEditProduct, setIdProduct }) => {
       </thead>
 
       <tbody className="bg-white divide-y divide-gray-200 text-gray-700">
-        {filteredProducts.map((product) => (
+        {paginatedItems.map((product) => (
           <tr
             key={product._id}
             className="border-b border-gray-300 hover:bg-gray-50"
           >
             <td className="px-6 py-4">
-              {String(product._id).padStart(3, "0")}
+              {String(product._id).padStart(3, "0").slice(-6)}
             </td>
             <td className="px-6 py-4">{product.title}</td>
             <td className="px-6 py-4">{product.category}</td>

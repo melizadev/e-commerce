@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Mainlayout from "./pages/mainlayout/Mainlayout.jsx";
+import AppRouter from "../src/routes/AppRouter.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store.js";
 import "./translations/i18n.js";
@@ -12,10 +12,9 @@ createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <BrowserRouter>
       <UserContextProvider>
-        <Mainlayout />
+        <AppRouter />
+        <Toaster position="top-center" reverseOrder={false} />
       </UserContextProvider>
-
-      <Toaster position="top-center" reverseOrder={false} />
     </BrowserRouter>
   </Provider>,
 );

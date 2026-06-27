@@ -19,44 +19,89 @@ const Filter = ({ setFilteredProducts, items, setHasFiltered }) => {
     setFilteredProducts(filtProducts);
   }, [minPrice, maxPrice]);
   return (
-    <div className="mb-4 bg-gray-50 rounded-lg p-2">
-      <fieldset className="flex items-center gap-2 ">
-        <legend className="text-xl flex py-1 items-center gap-2 font-semibold text-[#4a5565]">
-          {t("filter.title")} <SlidersHorizontal size={20} strokeWidth={1} />
-        </legend>
+    <div className="mb-5 flex flex-wrap items-center gap-3">
+      <div className="flex items-center gap-2 text-gray-700 font-medium">
+        <SlidersHorizontal size={16} className="text-pink-500" />
+        <span>{t("filter.title")}</span>
+      </div>
 
-        {/* Min price */}
-        <div className="flex items-center gap-2">
-          <label htmlFor="min-price" className="text-gray-600 text-sm">
-            {t("filter.min_price")}
-          </label>
-          <input
-            id="min-price"
-            type="number"
-            min="0"
-            placeholder="2$"
-            className="rounded px-2 py-1 w-20 bg-white border border-gray-300 text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-          />
-        </div>
+      <div className="relative">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+          $
+        </span>
+        <input
+          id="min-price"
+          type="number"
+          min="0"
+          placeholder={t("filter.min_price")}
+          value={minPrice}
+          onChange={(e) => setMinPrice(e.target.value)}
+          className="
+        w-30
+        h-9
+        rounded-full
+        border border-gray-200
+        bg-white
+        pl-7 pr-3
+        text-sm
+        text-gray-700
+        outline-none
+        transition
+        focus:border-pink-400
+        focus:ring-2
+        focus:ring-pink-100
+      "
+        />
+      </div>
 
-        {/* Max price */}
-        <div className="flex items-center gap-2">
-          <label htmlFor="max-price" className="text-gray-600 text-sm">
-            {t("filter.max_price")}
-          </label>
-          <input
-            id="max-price"
-            type="number"
-            min="0"
-            placeholder="100$"
-            className="rounded px-2 py-1 w-20 bg-white border border-gray-300 text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-          />
-        </div>
-      </fieldset>
+      <span className="text-gray-300">—</span>
+
+      <div className="relative">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
+          $
+        </span>
+        <input
+          id="max-price"
+          type="number"
+          min="0"
+          placeholder={t("filter.max_price")}
+          value={maxPrice}
+          onChange={(e) => setMaxPrice(e.target.value)}
+          className="
+        w-30
+        h-9
+        rounded-full
+        border border-gray-200
+        bg-white
+        pl-7 pr-3
+        text-sm
+        text-gray-700
+        outline-none
+        transition
+        focus:border-pink-400
+        focus:ring-2
+        focus:ring-pink-100
+      "
+        />
+      </div>
+
+      {(minPrice || maxPrice) && (
+        <button
+          onClick={() => {
+            setMinPrice("");
+            setMaxPrice("");
+          }}
+          className="
+        text-xs
+        text-pink-600
+        hover:text-pink-700
+        font-medium
+        transition
+      "
+        >
+          ✕ Clear
+        </button>
+      )}
     </div>
   );
 };

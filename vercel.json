@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/e-commerce/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

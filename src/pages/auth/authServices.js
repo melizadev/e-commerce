@@ -15,18 +15,20 @@ export const registerService = async (data) => {
 //get profile service to get the user data from the backend
 export const getProfileService = async () => {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/auth/profile`,
-      { withCredentials: true },
-    );
-    console.log("Profile data:", response.data);
+    const response = await axios.get(`${API_URL}/auth/profile`, {
+      withCredentials: true,
+    });
+
     return response.data;
   } catch (error) {
+    if (error.response?.status === 401) {
+      return null;
+    }
+
     console.error("Error fetching profile:", error);
-    throw new Error("Failed to fetch profile");
+    throw error;
   }
 };
-
 export const loginService = async (data) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, data, {
@@ -35,10 +37,11 @@ export const loginService = async (data) => {
     });
     return response.data;
   } catch (error) {
-    throw new Error(error.response?.data?.message);
+    throw new Error(
+      error.response?.data?.message || "Error de conexión con el servidor",
+    );
   }
 };
-
 export const logoutService = async () => {
   try {
     const response = await axios.post(

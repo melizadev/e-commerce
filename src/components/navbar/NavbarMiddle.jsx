@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Menu } from "lucide-react";
-import SearchBar from "./SearchBar";
+import SearchBar from "./searchbar/SearchBar";
 import NavActions from "./NavActions";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -33,7 +33,6 @@ const NavbarMiddle = ({
       </button>
       {/* // search products in search bar */}
       <div className="hidden lg:flex md:flex items-center search_box justify-center">
-        {" "}
         <SearchBar products={products} setSearchResults={setSearchResults} />
       </div>
       {/* navbar middle right  */}

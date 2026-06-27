@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginService } from "../authServices";
 import { loginSchema } from "./loginSchema";
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../../context/UserContext";
 import toast from "react-hot-toast";
 import { Navigate } from "react-router";
 
@@ -22,10 +22,9 @@ const Login = () => {
   });
   const onSubmit = async (data) => {
     try {
-      console.log("Submitting login form with data:", data);
+      setLoading(true);
       const response = await loginService(data);
       setUserInfo(response);
-      console.log("Login successful:", response);
       toast.success("Login Successful");
       reset();
       setRedirect(true);
@@ -35,9 +34,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
   if (redirect && userInfo?.isAdmin) {
     return <Navigate to="/e-commerce" />;
   }

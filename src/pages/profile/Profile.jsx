@@ -1,55 +1,53 @@
-import { useEffect } from "react";
+import { Mail, User } from "lucide-react";
 import { useUser } from "../../context/UserContext";
 
 const Profile = () => {
   const { userInfo } = useUser();
 
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
-
   return (
-    <div className="min-h-[85vh] bg-gray-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <div className="flex flex-col items-center">
-          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-3xl font-bold text-gray-600">
+    <section className="min-h-[85vh] bg-gray-100 flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden">
+        {/* Header */}
+        <div className="bg-black text-white p-8 flex flex-col items-center">
+          <div className="w-24 h-24 rounded-full bg-white text-black flex items-center justify-center text-4xl font-bold">
             {userInfo?.username?.charAt(0).toUpperCase()}
           </div>
 
-          <h1 className="mt-4 text-2xl font-bold text-gray-800">My Profile</h1>
+          <h1 className="mt-4 text-2xl font-bold">{userInfo?.username}</h1>
 
-          <p className="text-gray-500 text-sm">
-            Manage your account information
-          </p>
+          <p className="text-gray-300 text-sm mt-1">Mi perfil</p>
         </div>
 
-        <div className="mt-8 space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-500">
-              Username
-            </label>
+        {/* Content */}
+        <div className="p-6 space-y-5">
+          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+            <div className="bg-gray-200 p-3 rounded-full">
+              <User size={20} className="text-gray-600" />
+            </div>
 
-            <div className="mt-1 p-3 border rounded-lg bg-gray-50 text-gray-800">
-              {userInfo?.username}
+            <div>
+              <p className="text-sm text-gray-500">Nombre de usuario</p>
+
+              <p className="font-medium text-gray-800">{userInfo?.username}</p>
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-500">
-              Email
-            </label>
+          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+            <div className="bg-gray-200 p-3 rounded-full">
+              <Mail size={20} className="text-gray-600" />
+            </div>
 
-            <div className="mt-1 p-3 border rounded-lg bg-gray-50 text-gray-800">
-              {userInfo?.email}
+            <div>
+              <p className="text-sm text-gray-500">Correo electrónico</p>
+
+              <p className="font-medium text-gray-800 break-all">
+                {userInfo?.email}
+              </p>
             </div>
           </div>
         </div>
-
-        <button className="w-full mt-8 bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-700 transition">
-          Edit Profile
-        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

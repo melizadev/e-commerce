@@ -1,43 +1,32 @@
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import useProducts from "../../hooks/useProducts";
-import { useState } from "react";
 import Filter from "../../components/filter/Filter";
-import ProductList from "../productList/ProductList";
+import ProductList from "../../components/productsSection/ProductList";
 import Error from "../error/Error";
+import Loader from "../../components/common/Loader";
+import ProductSection from "../../components/productsSection/ProductSection";
 const Category = () => {
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const { t } = useTranslation();
   const { category } = useParams();
   const items = products.filter(
     (product) => product.category.toLowerCase() === category?.toLowerCase(),
   );
-  const [filteredProducts, setFilteredProducts] = useState(items);
-  const [hasFiltered, setHasFiltered] = useState(false);
-  const noResults = hasFiltered && filteredProducts.length === 0;
-  if (items.length === 0) {
-    return <Error />;
+  if (loading === true) {
+    return <Loader />;
   }
+
   return (
-    <div className="w-full min-h-[86vh] bg-[#ffff] p-4 flex items-center justify-center">
-      <div className="container px-4">
-        <h1 className="text-[40px] text-[#6b6b6b] pb-3 capitalize">
-          {t(`categories.${category}`) || category}
-        </h1>
-        <Filter
-          setFilteredProducts={setFilteredProducts}
-          items={items}
-          setHasFiltered={setHasFiltered}
+    <div className="w-full min-h-[83vh] bg-[#ffff] flex items-start justify-center">
+      <div className="container p-4">
+        <h2 className="text-xl text-gray-600 py-2">
+          Resultados para {category}:{" "}
+        </h2>
+        <ProductSection
+          title={t(`categories.${category}`) || category}
+          products={items}
         />
-        {noResults ? (
-          <div className="h-full w-full flex items-center justify-center">
-            <p className="text-gray-500 mt-4 text-lg">
-              {t("searcher.no_results")}
-            </p>
-          </div>
-        ) : (
-          <ProductList filteredProducts={filteredProducts} />
-        )}
       </div>
     </div>
   );

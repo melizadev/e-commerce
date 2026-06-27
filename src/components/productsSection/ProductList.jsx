@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import useCartActions from "../../hooks/useCartActions";
-const ProductList = ({ filteredProducts }) => {
+const ProductList = ({ products }) => {
   const { t } = useTranslation();
   const { handleAddToCart } = useCartActions();
   return (
@@ -8,13 +8,13 @@ const ProductList = ({ filteredProducts }) => {
       className="w-full mt-2 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5"
       role="list"
     >
-      {filteredProducts?.map((product) => (
+      {products?.map((product) => (
         <li key={product._id} role="listitem">
           <article className="w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
             <img
               src={product.imageUrl}
               alt={product.title}
-              className="lg:h-[300px] md:h-[250px] h-[290px] cursor-pointer w-full object-cover rounded-t-lg"
+              className="h-[320px] cursor-pointer w-full object-cover rounded-t-lg"
             />
 
             <div className="px-2 py-1">

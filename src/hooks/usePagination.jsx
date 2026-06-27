@@ -1,11 +1,11 @@
 import { useState } from "react";
-const usePagination = (filteredProducts, itemsPerPage = 6) => {
+const usePagination = (items, itemsPerPage = 6) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(items.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
-  return { totalPages, setCurrentPage, paginatedProducts, currentPage };
+  const paginatedItems = items.slice(startIndex, endIndex);
+  return { totalPages, setCurrentPage, paginatedItems, currentPage };
 };
 
 export default usePagination;

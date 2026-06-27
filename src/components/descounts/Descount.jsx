@@ -6,7 +6,6 @@ const Descount = () => {
       <h2 className="text-2xl"> {t("offers.title")}</h2>
       <h2> {t("offers.subtitle")}</h2>
       <button className="mt-2 bg-white text-pink-500 py-1 px-2 rounded-sm cursor-pointer hover:bg-pink-50 duration-200">
-        {" "}
         {t("offers.button")}
       </button>
     </div>

@@ -1,5 +1,5 @@
-import ProductForm from "./ProductForm";
-import DeleteModal from "./deletemodal/DeleteModal";
+import ProductForm from "../ProductForm";
+import DeleteModal from "./DeleteModal";
 const ProductModals = ({
   editProduct,
   handleCreateProduct,

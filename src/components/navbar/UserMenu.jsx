@@ -1,35 +1,43 @@
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { useUser } from "../../context/UserContext";
-import { logoutService } from "../../auth/authServices";
-import toast from "react-hot-toast";
-
+import useLogout from "../../hooks/useLogout";
+import { useTranslation } from "react-i18next";
 const UserMenu = () => {
-  const { userInfo, setUserInfo } = useUser();
   const { t } = useTranslation();
-  const handleLogout = async () => {
-    try {
-      await logoutService();
-      setUserInfo(null);
-      toast.success(t("Logout successful"));
-    } catch (error) {
-      toast.error(t(error.message || "header.logoutFailed"));
-    }
-  };
+  const { userInfo } = useUser();
+  const { handleLogout } = useLogout();
   return (
-    <div className="flex gap-2">
+    <div className="flex items-center gap-3">
       {userInfo?.username ? (
         <>
           {/* USER AUTHENTICATED */}
           <Link
             to="/e-commerce/profile"
-            className="block px-2 py-2  text-gray-700 hover:text-pink-500 transition"
+            className="
+          px-4 py-2 
+          rounded-full
+          bg-pink-50
+          text-gray-700
+          font-medium
+          hover:bg-pink-100
+          hover:text-pink-600
+          transition-all duration-300
+        "
           >
             Profile
           </Link>
 
           <button
-            className="w-full text-left px-2 py-2  text-red-600  border-pink-500 rounded transition"
+            className="
+          px-4 py-2
+          rounded-full
+          bg-red-50
+          text-red-600
+          font-medium
+          hover:bg-red-100
+          transition-all duration-300
+          cursor-pointer
+        "
             onClick={handleLogout}
           >
             {t("header.logout")}
@@ -40,14 +48,33 @@ const UserMenu = () => {
           {/* USER NOT AUTHENTICATED */}
           <Link
             to="/e-commerce/login"
-            className="block px-4 py-2  text-gray-700 hover:text-pink-600 transition"
+            className="
+          px-4 py-2
+          rounded-full
+          text-gray-700
+          font-medium
+          hover:bg-pink-50
+          hover:text-pink-600
+          transition-all duration-300
+        "
           >
             {t("header.login")}
           </Link>
 
           <Link
             to="/e-commerce/register"
-            className="block px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white transition   border  border-pink-500 rounded"
+            className="
+          px-5 py-2
+          rounded-full
+          bg-pink-600
+          text-white
+          font-medium
+          shadow-sm
+          hover:bg-pink-700
+          hover:shadow-md
+          hover:-translate-y-0.5
+          transition-all duration-300
+        "
           >
             {t("header.register")}
           </Link>

@@ -2,10 +2,9 @@ import { useState } from "react";
 import TopBar from "./TopBar";
 import NavbarMiddle from "./NavbarMiddle";
 import MenuMobile from "./MenuMobile";
-import useProducts from "../../hooks/useProducts";
-const Navbar = ({ setSearchResults }) => {
+
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { products } = useProducts();
 
   return (
     <div className="w-full flex flex-col items-center justify-center  bg-[#ffffff]">
@@ -13,14 +12,9 @@ const Navbar = ({ setSearchResults }) => {
       <TopBar />
       {/* // middle part of navbar with logo, search bar and user actions */}
       <div className="navbar-middle w-full flex items-center justify-center bg-white border-t border-gray-200">
-        <NavbarMiddle
-          products={products}
-          setSearchResults={setSearchResults}
-          isMenuOpen={isMenuOpen}
-          setIsMenuOpen={setIsMenuOpen}
-        />
+        <NavbarMiddle isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </div>
-      {isMenuOpen && <MenuMobile setSearchResults={setSearchResults} />}
+      {isMenuOpen && <MenuMobile />}
     </div>
   );
 };

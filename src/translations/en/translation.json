@@ -50,8 +50,7 @@
   "menu": {
     "home": "Home",
     "products": "Products",
-    "about": "About Us",
-    "contact": "Contact"
+    "profile": "Profile"
   },
   "filter": {
     "min_price": "Min Price",

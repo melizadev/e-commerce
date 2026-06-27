@@ -1,13 +1,14 @@
-import ProductActions from "./ProductActions";
+import ProductActions from "./AdminActions";
 import useProducts from "../../hooks/useProducts";
 import usePagination from "../../hooks/usePagination";
 import useProductSearch from "../../hooks/useProductSearch";
 import useProductModals from "../../hooks/useProductModals";
-import ProductsListSection from "./ProductsListSection";
+import ProductsSection from "./ProductsSection";
 import { useState } from "react";
-import ProductModals from "./ProductModals";
+import ProductModals from "./modals/ProductModals";
 import toast from "react-hot-toast";
-const ProductAdminList = () => {
+import ProductsTableSkeleton from "./products-table/ProductsTableSkeleton";
+const AdminLayout = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const {
     editProduct,
@@ -18,12 +19,17 @@ const ProductAdminList = () => {
     setIdProduct,
   } = useProductModals();
 
-  const { products, handleCreateProduct, handleDelete, handleUpdateProduct } =
-    useProducts();
+  const {
+    products,
+    loading,
+    handleCreateProduct,
+    handleDelete,
+    handleUpdateProduct,
+  } = useProducts();
 
   const filteredProducts = useProductSearch(products, searchTerm);
 
-  const { totalPages, currentPage, setCurrentPage, paginatedProducts } =
+  const { totalPages, currentPage, setCurrentPage, paginatedItems } =
     usePagination(filteredProducts);
 
   const handleCreate = async (productData) => {
@@ -60,7 +66,7 @@ const ProductAdminList = () => {
   };
 
   return (
-    <section className="bg-gray-100 flex flex-col relative">
+    <section className="bg-gray-50 flex flex-col relative">
       <ProductActions
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
@@ -69,14 +75,19 @@ const ProductAdminList = () => {
       <div className="container mx-auto py-8">
         {/* Table */}
         <div className="overflow-x-auto">
-          <ProductsListSection
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            paginatedProducts={paginatedProducts}
-            setEditProduct={setEditProduct}
-            setIdProduct={setIdProduct}
-          />
+          {loading ? (
+            <ProductsTableSkeleton />
+          ) : (
+            <ProductsSection
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              paginatedItems={paginatedItems}
+              setEditProduct={setEditProduct}
+              setIdProduct={setIdProduct}
+            />
+          )}
+
           {/* Modals */}
           <ProductModals
             setEditProduct={setEditProduct}
@@ -98,4 +109,4 @@ const ProductAdminList = () => {
   );
 };
 
-export default ProductAdminList;
+export default AdminLayout;

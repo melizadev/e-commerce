@@ -1,6 +1,6 @@
 import { useContext, createContext, useState } from "react";
-import { getProfileService } from "../auth/authServices";
-
+import { getProfileService } from "../pages/auth/authServices";
+import { useEffect } from "react";
 export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
@@ -9,25 +9,23 @@ export const UserContextProvider = ({ children }) => {
 
   const checkSession = async () => {
     try {
-      const userData = await getProfileService();
-      setUserInfo(userData);
-      console.log("User session checked:", userData);
+      const profile = await getProfileService();
+
+      if (profile) {
+        setUserInfo(profile);
+      }
     } catch (error) {
-      console.log(error);
-      setUserInfo({});
+      console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
-  const getUserId = () => {
-    return userInfo?._id || null;
-  };
+  const isAuthenticated = !!userInfo?._id;
 
-  const isAuthenticated = () => {
-    return !!userInfo?._id;
-  };
-
+  useEffect(() => {
+    checkSession();
+  }, []);
   return (
     <UserContext.Provider
       value={{
@@ -35,7 +33,6 @@ export const UserContextProvider = ({ children }) => {
         setUserInfo,
         loading,
         checkSession,
-        getUserId,
         isAuthenticated,
       }}
     >
