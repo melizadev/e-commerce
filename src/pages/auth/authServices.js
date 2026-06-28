@@ -35,7 +35,7 @@ export const loginService = async (data) => {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
-    return response.data;
+    return response.data.message;
   } catch (error) {
     throw new Error(
       error.response?.data?.message || "Error de conexión con el servidor",

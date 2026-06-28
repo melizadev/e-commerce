@@ -10,16 +10,16 @@ const OrderSuccess = () => {
         <CheckCircle size={30} className="mx-auto text-green-500 mb-5" />
 
         <h1 className="text-gray-700 text-3xl font-bold mb-3">
-          ¡Compra realizada con éxito!
+          Purchase made successfully!
         </h1>
 
         <p className="text-gray-800 mb-5">
-          Gracias por tu compra. Hemos recibido tu pedido y comenzaremos a
-          prepararlo pronto.
+          Thank you for your purchase. We have received your order and we will
+          begin prepare it soon.
         </p>
 
         <div className="bg-gray-100 rounded-lg p-4 mb-6">
-          <p className="text-sm text-gray-500">Número de orden</p>
+          <p className="text-sm text-gray-500">Order number</p>
 
           <p className="text-gray-500 font-semibold text-lg break-all">
             #{orderId}
@@ -28,17 +28,17 @@ const OrderSuccess = () => {
 
         <div className="flex flex-col gap-3">
           <Link
-            to="s/orders"
+            to="/orders"
             className="bg-black text-white py-3 rounded-lg font-medium hover:opacity-90 transition"
           >
-            Ver mis pedidos
+            See my orders
           </Link>
 
           <Link
             to="/"
             className="border text-gray-600 border-gray-300 py-3 rounded-lg font-medium hover:bg-gray-100 transition"
           >
-            Seguir comprando
+            Go shopping
           </Link>
         </div>
       </div>

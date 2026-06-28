@@ -4,13 +4,12 @@ import { useEffect } from "react";
 export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const checkSession = async () => {
     try {
       const profile = await getProfileService();
-
       if (profile) {
         setUserInfo(profile);
       }
@@ -21,7 +20,7 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
-  const isAuthenticated = !!userInfo?._id;
+  const isAuthenticated = !!userInfo?.id;
 
   useEffect(() => {
     checkSession();

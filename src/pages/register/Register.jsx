@@ -5,12 +5,12 @@ import { registerService } from "../../pages/auth/authServices";
 import { useState } from "react";
 import { Navigate } from "react-router";
 import { useUser } from "../../context/UserContext";
+import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 const Register = () => {
   const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-  const [error, setError] = useState(null);
-  const { userInfo, checkSession } = useUser();
+  const navigate = useNavigate();
+  const { checkSession } = useUser();
   const {
     register,
     handleSubmit,
@@ -22,35 +22,24 @@ const Register = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log("FORM SUBMITTED", data);
-
     try {
       setLoading(true);
+
       const response = await registerService(data);
-      console.log("REGISTER RESPONSE", response);
-      try {
-        await checkSession(); // try to load user
-        console.log("Session check successful after register");
-      } catch {
-        console.warn("Session check failed after register");
-      }
-      setRedirect(true);
+
+      await checkSession();
+
       reset();
 
       toast.success(response.message);
-    } catch (error) {
-      setError(error.message);
-      toast.error(error.message);
 
-      setTimeout(() => setError(null), 5000);
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
-  if (redirect && !userInfo.isAdmin) {
-    return <Navigate to="/" />;
-  }
-
   return (
     <section className="min-h-[85vh] bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm">
@@ -138,8 +127,6 @@ const Register = () => {
               </p>
             )}
           </div>
-          {/* Error Message */}
-          {error && <p className="text-sm text-red-500">{error}</p>}
           <button
             disabled={loading}
             type="submit"

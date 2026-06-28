@@ -15,7 +15,7 @@ const Profile = () => {
 
           <h1 className="mt-4 text-2xl font-bold">{userInfo?.username}</h1>
 
-          <p className="text-gray-300 text-sm mt-1">Mi perfil</p>
+          <p className="text-gray-300 text-sm mt-1">My profile</p>
         </div>
 
         {/* Content */}
@@ -26,7 +26,7 @@ const Profile = () => {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Nombre de usuario</p>
+              <p className="text-sm text-gray-500">User name</p>
 
               <p className="font-medium text-gray-800">{userInfo?.username}</p>
             </div>
@@ -38,7 +38,7 @@ const Profile = () => {
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Correo electrónico</p>
+              <p className="text-sm text-gray-500">Email</p>
 
               <p className="font-medium text-gray-800 break-all">
                 {userInfo?.email}

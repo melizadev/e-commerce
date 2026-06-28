@@ -15,6 +15,7 @@ const useProducts = () => {
       setProducts(response);
     } catch (error) {
       console.error(error);
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -29,17 +30,18 @@ const useProducts = () => {
       await getProducts();
     } catch (error) {
       console.error(error);
+      throw error;
     }
   };
 
   const handleUpdateProduct = async (productData) => {
     try {
-      console.log(productData);
       await updateProduct(productData);
 
       await getProducts();
     } catch (error) {
       console.error(error);
+      throw error;
     }
   };
 
@@ -49,6 +51,7 @@ const useProducts = () => {
       await getProducts();
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
   return {

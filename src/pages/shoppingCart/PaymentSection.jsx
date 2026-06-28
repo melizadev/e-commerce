@@ -13,12 +13,13 @@ const PaymentSection = () => {
   const dispatch = useDispatch();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingPay, setLoadingPay] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleCancelOrder = async () => {
     try {
       await cancelOrderService(orderId);
-      toast.success("Pedido cancelado");
+      toast.success("Order canceled");
       navigate("/orders");
     } catch (error) {
       toast.error(error.message);
@@ -26,13 +27,15 @@ const PaymentSection = () => {
   };
   const handlePay = async () => {
     try {
-      const response = await payOrder(orderId);
+      setLoadingPay(true);
+      await payOrder(orderId);
       toast.success("Payment successful");
       dispatch(clearCartState());
-      setOrder(response.order);
       navigate(`/${orderId}/success`);
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoadingPay(false);
     }
   };
   useEffect(() => {
@@ -92,9 +95,10 @@ const PaymentSection = () => {
         <div className="mt-6 flex gap-3">
           <button
             onClick={() => handlePay()}
+            disabled={loadingPay}
             className="flex-1 bg-pink-600 text-white py-3 rounded-full hover:bg-pink-700 transition"
           >
-            Pay
+            {loadingPay ? "Processing" : "Pay"}
           </button>
 
           <button

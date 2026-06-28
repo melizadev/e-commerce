@@ -20,9 +20,7 @@ const Category = () => {
   return (
     <div className="w-full min-h-[83vh] bg-[#ffff] flex items-start justify-center">
       <div className="container p-4">
-        <h2 className="text-xl text-gray-600 py-2">
-          Resultados para {category}:{" "}
-        </h2>
+        <h2 className="text-xl text-gray-600 py-2">Results for {category}: </h2>
         <ProductSection
           title={t(`categories.${category}`) || category}
           products={items}

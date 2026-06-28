@@ -5,12 +5,12 @@ import { loginService } from "../authServices";
 import { loginSchema } from "./loginSchema";
 import { useUser } from "../../../context/UserContext";
 import toast from "react-hot-toast";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-  const { setUserInfo, userInfo } = useUser();
+  const { checkSession } = useUser();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,23 +20,26 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   });
+
   const onSubmit = async (data) => {
     try {
       setLoading(true);
+
       const response = await loginService(data);
-      setUserInfo(response);
-      toast.success("Login Successful");
+
+      await checkSession();
+
+      toast.success(response);
+
       reset();
-      setRedirect(true);
+
+      navigate("/");
     } catch (error) {
       toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
-  if (redirect && userInfo?.isAdmin) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <div className="min-h-[87vh] bg-gray-50 flex items-center justify-center px-4">

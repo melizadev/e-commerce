@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import useCartActions from "../../hooks/useCartActions";
 const ProductList = ({ products }) => {
   const { t } = useTranslation();
-  const { handleAddToCart } = useCartActions();
+  const { handleAddToCart, addingProductId } = useCartActions();
   return (
     <ul
       className="w-full mt-2 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5"
@@ -29,10 +29,11 @@ const ProductList = ({ products }) => {
 
             <button
               onClick={() => handleAddToCart(product)}
+              disabled={product._id === addingProductId}
               aria-label={`${t("cart.add")} ${product.title}`}
               className="w-full border-t border-gray-200 font-semibold text-gray-700 py-2 hover:bg-gray-100 duration-200"
             >
-              {t("cart.add")}
+              {addingProductId === product._id ? "Processing" : "Add to cart"}
             </button>
           </article>
         </li>

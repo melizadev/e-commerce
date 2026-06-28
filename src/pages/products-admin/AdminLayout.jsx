@@ -35,10 +35,10 @@ const AdminLayout = () => {
   const handleCreate = async (productData) => {
     try {
       await handleCreateProduct(productData);
-      toast.success("Producto creado correctamente");
+      toast.success("Product created successfully");
       setNewProduct(null);
     } catch (error) {
-      toast.error("No se pudo crear el producto");
+      toast.error("Error creating product");
       console.error(error);
     }
   };
@@ -46,10 +46,10 @@ const AdminLayout = () => {
   const handleUpdate = async (productData) => {
     try {
       await handleUpdateProduct(productData);
-      toast.success("Producto actualizado correctamente");
+      toast.success("Product updated successfully");
       setEditProduct(null);
     } catch (error) {
-      toast.error("No se pudo actualizar el producto");
+      toast.error("Error updating product");
       console.error(error);
     }
   };
@@ -57,10 +57,10 @@ const AdminLayout = () => {
   const handleDeleteConfirm = async () => {
     try {
       await handleDelete(idProduct);
-      toast.success("Producto eliminado correctamente");
+      toast.success("Product deleted successfully");
       setIdProduct(null);
     } catch (error) {
-      toast.error("No se pudo eliminar el producto");
+      toast.error("Error deleting product");
       console.error(error);
     }
   };
@@ -95,9 +95,9 @@ const AdminLayout = () => {
             editProduct={editProduct}
             newProduct={newProduct}
             idProduct={idProduct}
-            onCreate={handleCreate}
-            onUpdate={handleUpdate}
-            onDelete={handleDeleteConfirm}
+            handleCreateProduct={handleCreate}
+            handleUpdateProduct={handleUpdate}
+            handleDelete={handleDeleteConfirm}
             setNewProduct={setNewProduct}
             closeEdit={() => setEditProduct(null)}
             closeCreate={() => setNewProduct(null)}

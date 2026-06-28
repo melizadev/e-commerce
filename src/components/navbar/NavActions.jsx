@@ -8,7 +8,7 @@ const NavActions = ({ handleCartClick }) => {
   const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
-    <div className="w-auto lg:flex md:flex sm:hidden hidden items-center justify-center gap-4">
+    <div className="hidden md:flex items-center justify-center gap-4">
       {/* Shopping Cart */}
       <button
         className="relative cursor-pointer p-2 rounded-full  hover:bg-pink-100 transition-all duration-300 hover:scale-105 shadow-sm"
@@ -20,7 +20,6 @@ const NavActions = ({ handleCartClick }) => {
           {cartTotalQuantity}
         </span>
       </button>
-
       {/* Admin */}
       {userInfo?.isAdmin && (
         <Link
@@ -30,7 +29,6 @@ const NavActions = ({ handleCartClick }) => {
           Admin
         </Link>
       )}
-
       {/* User Menu */}
       <div className="rounded-full">
         <UserMenu />

@@ -4,12 +4,11 @@ const GuestCartState = () => {
     <div className="w-full min-h-[86vh] flex items-center justify-center bg-white px-4">
       <div className="max-w-md w-full bg-white border border-gray-200 rounded-xl shadow-sm p-8 text-center">
         <h1 className="text-3xl font-semibold text-gray-800 mb-4">
-          Tu carrito te está esperando
+          Your cart is waiting for you
         </h1>
 
         <p className="text-gray-500 mb-8">
-          Inicia sesión para revisar tus productos guardados y continuar con tu
-          compra.
+          Log in to see your saved products and continue with your purchase
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -17,19 +16,19 @@ const GuestCartState = () => {
             to="/login"
             className="bg-black text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
           >
-            Iniciar sesión
+            Log in
           </Link>
 
           <Link
             to="/register"
             className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition"
           >
-            Registrarme
+            Register
           </Link>
         </div>
 
         <p className="text-sm text-gray-400 mt-6">
-          ¿Aún no tienes cuenta? Crear una solo toma unos segundos.
+          Don't have an account yet? Creating one only takes a few seconds.
         </p>
       </div>
     </div>

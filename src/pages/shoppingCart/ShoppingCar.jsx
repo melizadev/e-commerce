@@ -10,17 +10,17 @@ import GuestCartState from "./GuestCartState";
 const ShoppingCar = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { userInfo } = useUser();
+  const { isAuthenticated } = useUser();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
-  const { handleDeleteProduct, handleCheckout } = useCartActions();
+  const { handleDeleteProduct, handleCheckout, checkingOut } = useCartActions();
   useEffect(() => {
-    if (userInfo?.email) {
+    if (isAuthenticated) {
       dispatch(getCart());
     }
-  }, [userInfo, dispatch]);
-  if (!userInfo?.email) {
+  }, [isAuthenticated, dispatch]);
+  if (!isAuthenticated) {
     return <GuestCartState />;
   }
   return (
@@ -53,14 +53,12 @@ const ShoppingCar = () => {
 
         <div className="bg-white border-t border-gray-300 rounded-b-lg flex justify-between items-start p-4 m-0">
           <div>
-            {userInfo?.email && (
-              <Link
-                to="/orders"
-                className="text-gray-700 p-2 rounded-md border-gray-400 border hover:shadow-sm duration-200 "
-              >
-                See my orders
-              </Link>
-            )}
+            <Link
+              to="/orders"
+              className="text-gray-700 p-2 rounded-md border-gray-400 border hover:shadow-sm duration-200 "
+            >
+              See my orders
+            </Link>
           </div>
           {cartItems?.length > 0 && (
             <div>
@@ -69,9 +67,10 @@ const ShoppingCar = () => {
               </p>
               <button
                 onClick={() => handleCheckout()}
+                disabled={checkingOut}
                 className="text-gray-600 hover:shadow-sm duration-200 font-semibold border border-gray-400 rounded-lg py-1 px-3 cursor-pointer"
               >
-                {t("cart.place_order")}
+                {checkingOut ? "Procesing..." : "Checkout"}
               </button>
             </div>
           )}

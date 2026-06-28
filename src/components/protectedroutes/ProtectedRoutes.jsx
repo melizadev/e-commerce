@@ -4,7 +4,7 @@ import { Navigate } from "react-router";
 const ProtectedRoutes = ({ children }) => {
   const { userInfo } = useUser();
 
-  if (Object.keys(userInfo).length === 0) {
+  if (!userInfo) {
     return <Navigate to="/" replace />;
   }
 

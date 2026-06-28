@@ -14,19 +14,16 @@ const OrderDetails = () => {
   const handleCancelOrder = async () => {
     try {
       await cancelOrderService(orderId);
-
       toast.success("Pedido cancelado");
-
       navigate("/orders");
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
   useEffect(() => {
     const fetchOrder = async () => {
       try {
         const response = await getOrderService(orderId);
-        console.log(response);
         setOrder(response.order);
       } catch (error) {
         console.error(error);
@@ -43,7 +40,7 @@ const OrderDetails = () => {
   }
 
   if (!order) {
-    return <div className="p-10 text-center">Pedido no encontrado</div>;
+    return <div className="p-10 text-center">Order not found</div>;
   }
 
   return (
@@ -53,12 +50,12 @@ const OrderDetails = () => {
         className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-black mb-6"
       >
         <ArrowLeft size={18} />
-        Volver a pedidos
+        Back to orders.
       </Link>
       <div className="bg-white rounded-xl shadow p-6">
-        <h1 className="text-2xl font-bold mb-2">Pedido #{order._id}</h1>
+        <h1 className="text-2xl font-bold mb-2">Order #{order._id}</h1>
         <p>
-          <span className="font-medium">Artículos:</span> {order.items.length}
+          <span className="font-medium">Articles:</span> {order.items.length}
         </p>
         <p className="text-gray-500">
           {new Date(order.createdAt).toLocaleDateString()}
@@ -66,11 +63,11 @@ const OrderDetails = () => {
 
         <div className="flex gap-3 mt-4">
           <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-            Pago {order.payment.status}
+            Pay {order.payment.status}
           </span>
 
           <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
-            Pedido {order.orderStatus}
+            Order {order.orderStatus}
           </span>
         </div>
 
@@ -96,12 +93,12 @@ const OrderDetails = () => {
 
                   <div className="mt-2 space-y-1 text-sm">
                     <p>
-                      <span className="font-medium">Cantidad:</span>{" "}
+                      <span className="font-medium">Quantity:</span>{" "}
                       {item.quantity}
                     </p>
 
                     <p>
-                      <span className="font-medium">Precio unitario:</span> $
+                      <span className="font-medium">Unitary price:</span> $
                       {item.price}
                     </p>
                   </div>
@@ -121,7 +118,7 @@ const OrderDetails = () => {
 
         <div className="border-t border-gray-300 mt-8 pt-6">
           <div className="flex justify-between items-center">
-            <span className="text-lg font-medium">Total del pedido</span>
+            <span className="text-lg font-medium">Total order</span>
 
             <span className="text-2xl font-bold text-gray-600">
               ${order.totalAmount}
@@ -136,21 +133,21 @@ const OrderDetails = () => {
                 to={`/payment/${orderId}`}
                 className="bg-black text-white px-5 py-3 rounded-lg"
               >
-                Continuar pago
+                Continue payment
               </Link>
 
               <button
                 onClick={() => handleCancelOrder()}
                 className="border px-5 py-3 rounded-lg"
               >
-                Cancelar pedido
+                Cancel order
               </button>
             </>
           )}
 
           {order.payment.status === "paid" && (
-            <Link className="bg-black text-white px-5 py-3 rounded-lg">
-              Seguir comprando
+            <Link to="/" className="bg-black text-white px-5 py-3 rounded-lg">
+              Go shopping
             </Link>
           )}
         </div>

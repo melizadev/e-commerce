@@ -4,11 +4,11 @@ import useLogout from "../../hooks/useLogout";
 import { useTranslation } from "react-i18next";
 const UserMenu = () => {
   const { t } = useTranslation();
-  const { userInfo } = useUser();
+  const { isAuthenticated } = useUser();
   const { handleLogout } = useLogout();
   return (
     <div className="flex items-center gap-3">
-      {userInfo?.username ? (
+      {isAuthenticated ? (
         <>
           {/* USER AUTHENTICATED */}
           <Link
