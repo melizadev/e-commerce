@@ -16,10 +16,6 @@ const ShowResults = () => {
     );
   }, [products, search]);
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <section className="bg-white w-full py-4">
       <div className="container mx-auto px-4">
@@ -32,7 +28,7 @@ const ShowResults = () => {
           <p className="text-gray-500 mt-1">"{search}"</p>
         </div>
 
-        <ProductsSection products={filteredProducts} />
+        <ProductsSection products={filteredProducts} loading={loading} />
       </div>
     </section>
   );

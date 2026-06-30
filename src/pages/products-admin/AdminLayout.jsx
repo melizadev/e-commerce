@@ -1,4 +1,4 @@
-import ProductActions from "./AdminActions";
+import ProductActions from "./ProductActions";
 import useProducts from "../../hooks/useProducts";
 import usePagination from "../../hooks/usePagination";
 import useProductSearch from "../../hooks/useProductSearch";

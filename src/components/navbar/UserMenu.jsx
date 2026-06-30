@@ -22,6 +22,7 @@ const UserMenu = () => {
           hover:bg-pink-100
           hover:text-pink-600
           transition-all duration-300
+             hover:-translate-y-0.5
         "
           >
             Profile
@@ -37,6 +38,7 @@ const UserMenu = () => {
           hover:bg-red-100
           transition-all duration-300
           cursor-pointer
+             hover:-translate-y-0.5
         "
             onClick={handleLogout}
           >
@@ -53,9 +55,11 @@ const UserMenu = () => {
           rounded-full
           text-gray-700
           font-medium
-          hover:bg-pink-50
+          bg-pink-50
           hover:text-pink-600
           transition-all duration-300
+             hover:-translate-y-0.5
+
         "
           >
             {t("header.login")}

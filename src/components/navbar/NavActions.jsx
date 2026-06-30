@@ -24,7 +24,7 @@ const NavActions = ({ handleCartClick }) => {
       {userInfo?.isAdmin && (
         <Link
           to="/admin/products"
-          className="px-2 py-2 rounded-full bg-gray-100 text-gray-700 font-medium hover:bg-pink-50 hover:text-pink-600 transition-all duration-300"
+          className="px-2 py-2 rounded-full text-gray-700 font-medium hover:bg-pink-50 hover:text-pink-600 transition-all duration-300"
         >
           Admin
         </Link>

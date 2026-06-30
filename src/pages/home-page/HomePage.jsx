@@ -4,13 +4,13 @@ import Descount from "../../components/descounts/Descount";
 import ProductSection from "../../components/productsSection/ProductSection";
 import useProducts from "../../hooks/useProducts";
 const HomePage = () => {
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   return (
     <div className="w-full flex flex-col items-center gap-6 pt-0 justify-center bg-[#ffffff]">
       <Banner />
       <Categories />
       <Descount />
-      <ProductSection products={products} />
+      <ProductSection products={products} loading={loading} />
     </div>
   );
 };

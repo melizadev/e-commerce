@@ -100,7 +100,14 @@ const Orders = () => {
 
               <Link
                 to={`/orders/${order._id}`}
-                className=" text-gray-700 px-5 py-2 rounded-lg"
+                className="px-5 py-2
+          rounded-full
+          bg-pink-600
+          text-white
+          font-medium
+          shadow-sm
+          hover:bg-pink-700
+          hover:shadow-md"
               >
                 See details
               </Link>
