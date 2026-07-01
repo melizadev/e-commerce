@@ -13,6 +13,7 @@ export const UserContextProvider = ({ children }) => {
       if (profile) {
         setUserInfo(profile);
       }
+      return profile;
     } catch (error) {
       console.error(error);
     } finally {

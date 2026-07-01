@@ -24,20 +24,18 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
+      await loginService(data);
 
-      const response = await loginService(data);
+      const user = await checkSession();
 
-      await checkSession();
-
-      toast.success(response);
-
+      if (!user) {
+        throw new Error("Authentication failed. Please try again.");
+      }
       reset();
-
+      toast.success("Login successful");
       navigate("/");
     } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
+      toast.error(error.message || "Login failed. Please try again.");
     }
   };
 
