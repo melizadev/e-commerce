@@ -14,7 +14,8 @@ const useLogout = () => {
     try {
       await logoutService();
       dispatch(clearCartState());
-      setUserInfo({});
+      localStorage.removeItem("user");
+      setUserInfo(null);
       toast.success(t("Logout successful"));
       navigate("/");
     } catch (error) {

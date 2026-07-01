@@ -4,7 +4,10 @@ import { useEffect } from "react";
 export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
   const [loading, setLoading] = useState(true);
 
   const checkSession = async () => {
@@ -13,6 +16,7 @@ export const UserContextProvider = ({ children }) => {
       if (profile) {
         setUserInfo(profile);
       }
+      localStorage.setItem("user", JSON.stringify(profile));
       return profile;
     } catch (error) {
       console.error(error);
@@ -26,7 +30,6 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     checkSession();
   }, []);
-  if (loading) return null;
   return (
     <UserContext.Provider
       value={{

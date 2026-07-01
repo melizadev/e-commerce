@@ -25,9 +25,7 @@ const Login = () => {
     try {
       setLoading(true);
       await loginService(data);
-
       const user = await checkSession();
-
       if (!user) {
         throw new Error("Authentication failed. Please try again.");
       }
