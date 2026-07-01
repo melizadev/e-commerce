@@ -26,6 +26,7 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     checkSession();
   }, []);
+  if (loading) return null;
   return (
     <UserContext.Provider
       value={{
