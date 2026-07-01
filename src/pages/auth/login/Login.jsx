@@ -11,6 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { checkSession } = useUser();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
