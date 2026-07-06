@@ -1,7 +1,7 @@
 # E-Commerce
 
 Aplicación de comercio electrónico desarrollada con React, Node.js, Express y MongoDB.
-
+Admin user: admin202020@gmail.com password: admin202020
 ## Tecnologías
 
 ### Frontend
