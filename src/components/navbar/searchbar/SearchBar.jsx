@@ -95,7 +95,7 @@ const SearchBar = () => {
       </button>
 
       {/* Resultados de búsqueda */}
-      {showResults && (
+      {showResults && searchText.trim() && (
         <ResultsDropdown
           filteredProducts={filteredProducts}
           handleSelectProduct={handleSelectProduct}
