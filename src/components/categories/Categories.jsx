@@ -1,67 +1,98 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import { useRef } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { images } from "../../data/products";
+
 const Categories = () => {
   const { t } = useTranslation();
+  const sliderRef = useRef(null);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 400,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    arrows: true,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: { slidesToShow: 4, slidesToScroll: 1 },
-      },
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
-      },
-      {
-        breakpoint: 640,
-        settings: { slidesToShow: 2, slidesToScroll: 1 },
-      },
-    ],
+  const scroll = (direction) => {
+    if (!sliderRef.current) return;
+
+    const cardWidth =
+      sliderRef.current.firstChild?.getBoundingClientRect().width || 300;
+
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -cardWidth * 2 : cardWidth * 2,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <div className="container bg-white  flex justify-center mt-10 h-[520px]">
-      <div className="w-full h-full">
-        <h1 className="text-3xl font-semibold text-[#4a5565] mb-4 p-2 rounded ">
-          {t(`categories.name`)}
-        </h1>
-        <Slider {...settings} className="px-2 mx-10 ">
-          {images.map((d) => (
-            <div
-              key={d.id}
-              className="bg-white max-w-[300px] h-[400px] text-black rounded-xl w-full flex flex-col items-center justify-center"
-            >
-              <Link to={`/${d?.category}`}>
-                <div className="h-full w-full flex justify-center items-center rounded-t-xl relative">
-                  <img
-                    src={d?.src}
-                    alt={d?.alt}
-                    className="h-full w-full  object-cover"
-                  />
-                  <p className="bg-white w-full mt-2 bottom-2 absolute text-lg font-semibold capitalize">
-                    {" "}
-                    {t(`categories.${d?.category}`) || ""}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </Slider>
+    <section className="container mx-auto mt-12 relative">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl  text-gray-700">{t("categories.name")}</h2>
+
+        <div className="flex gap-2">
+          <button
+            onClick={() => scroll("left")}
+            className="w-10 h-10 rounded-full  hover:bg-gray-100 transition cursor-pointer"
+          >
+            <ChevronLeft color={"gray"} className="mx-auto" />
+          </button>
+
+          <button
+            onClick={() => scroll("right")}
+            className="w-10 h-10 rounded-full  hover:bg-gray-100 transition cursor-pointer"
+          >
+            <ChevronRight color={"gray"} className="mx-auto" />
+          </button>
+        </div>
       </div>
-    </div>
+
+      <div
+        ref={sliderRef}
+        className="
+          flex
+          gap-6
+          overflow-x-auto
+          snap-x
+          snap-mandatory
+          scroll-smooth
+          scrollbar-hide
+          pb-3
+        "
+      >
+        {images.map((item) => (
+          <Link
+            key={item.id}
+            to={`/${item.category}`}
+            className="
+              snap-start
+              shrink-0
+              w-[280px]
+              md:w-[300px]
+              group
+            "
+          >
+            <div className="rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition duration-300">
+              <div className="overflow-hidden h-[360px]">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="
+                    w-full
+                    h-full
+                    object-cover
+                    group-hover:scale-105
+                    transition-transform
+                    duration-500
+                  "
+                />
+              </div>
+
+              <div className="py-4 text-center">
+                <p className="text-lg font-semibold capitalize text-gray-700">
+                  {t(`categories.${item.category}`)}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };
 
