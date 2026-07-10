@@ -35,6 +35,8 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       toast.error(error.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 

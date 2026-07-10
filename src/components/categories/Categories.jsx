@@ -21,7 +21,7 @@ const Categories = () => {
   };
 
   return (
-    <section className="container mx-auto mt-12 relative">
+    <section className="container mx-auto mt-12 relative px-4">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl  text-gray-700">{t("categories.name")}</h2>
 
