@@ -1,7 +1,9 @@
 # E-Commerce
+
 https://e-commerce-omega-eight-42.vercel.app/
 Aplicación de comercio electrónico desarrollada con React, Node.js, Express y MongoDB.
 Admin user: admin202020@gmail.com password: admin202020
+
 ## Tecnologías
 
 ### Frontend
@@ -61,14 +63,13 @@ JWT_SECRET_KEY=
 
 ### Backend
 
-```bash
-npm install
-npm run dev
-```
+````bash
+pnpm install
+pnpm dev```
 
 ### Frontend
 
 ```bash
-npm install
-npm run dev
-```
+pnpm install
+pnpm dev```
+````
